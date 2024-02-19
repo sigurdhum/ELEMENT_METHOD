@@ -1,0 +1,44 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.openAuxMdb(pathName='Y:/mp16_v3.cae')
+mdb.copyAuxMdbModel(fromName='Model-1', toName='Model-1')
+mdb.copyAuxMdbModel(fromName='Model-1', toName='Model-1')
+mdb.closeAuxMdb()
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-1'].Set(name='points_load', nodes=
+    mdb.models['Model-1'].parts['Part-1'].nodes.getSequenceFromMask(mask=(
+    '[#0:21 #200000 #0:7 #20000000 #0:14 #1000010 #0:14', 
+    ' #2000 #0:6 #80000 ]', ), ))
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].rootAssembly.Set(name='points_assembly', nodes=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].nodes.getSequenceFromMask(
+    mask=('[#0:26 #80 #0 #80000 #0:13 #20000000 #0:18', ' #4000 #0:7 #100 ]', 
+    ), ))
+mdb.models['Model-1'].ConcentratedForce(cf3=-0.0005, createStepName=
+    'points_load', distributionType=UNIFORM, field='', localCsys=None, name=
+    'points_loads', region=
+    mdb.models['Model-1'].rootAssembly.sets['points_assembly'])
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='mp16_up', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, numThreadsPerMpiProcess=1, queue=None, resultsFormat=
+    ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=0, 
+    waitMinutes=0)
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].move('uniformed_load', 
+    'points_load')
+mdb.models['Model-1'].historyOutputRequests['H-Output-1'].move('uniformed_load'
+    , 'points_load')
+# Save by 10992702 on 2024_02_19-15.21.58; build 2024 2023_09_21-14.55.25 RELr426 190762

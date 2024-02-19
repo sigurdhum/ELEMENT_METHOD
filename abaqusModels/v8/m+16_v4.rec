@@ -1,0 +1,72 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['mp16_up'].submit(consistencyChecking=OFF)
+mdb.jobs['mp16_up']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'jobName': 'mp16_up', 'clientHost': 'vwhresxaas42', 'handle': 0})
+mdb.jobs['mp16_up']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(ODB_FILE, {'file': 'Y:\\mp16_up.odb', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(COMPLETED, {'message': 'Analysis phase complete', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'jobName': 'mp16_up', 'clientHost': 'vwhresxaas42', 'handle': 7072})
+mdb.jobs['mp16_up']._Message(STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(ODB_FRAME, {'step': 0, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(ODB_FRAME, {'step': 0, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(STATUS, {'step': 1, 'increment': 1, 'attempts': 1, 
+    'severe': 0, 'equilibrium': 1, 'iterations': 1, 'totalTime': 0.0, 
+    'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 'phase': STANDARD_PHASE, 
+    'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(END_STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(STEP, {'stepId': 2, 'phase': STANDARD_PHASE, 
+    'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(ODB_FRAME, {'step': 1, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(MEMORY_ESTIMATE, {'memory': 55.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(MINIMUM_MEMORY, {'minimum_memory': 20.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(ODB_FRAME, {'step': 1, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(STATUS, {'step': 2, 'increment': 1, 'attempts': 1, 
+    'severe': 0, 'equilibrium': 1, 'iterations': 1, 'totalTime': 0.0, 
+    'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 'phase': STANDARD_PHASE, 
+    'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(END_STEP, {'stepId': 2, 'phase': STANDARD_PHASE, 
+    'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(COMPLETED, {'message': 'Analysis phase complete', 
+    'phase': STANDARD_PHASE, 'jobName': 'mp16_up'})
+mdb.jobs['mp16_up']._Message(JOB_COMPLETED, {
+    'time': 'Mon Feb 19 15:22:35 2024', 'jobName': 'mp16_up'})
