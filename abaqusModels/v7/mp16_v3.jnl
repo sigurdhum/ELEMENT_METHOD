@@ -1,0 +1,54 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.openAuxMdb(pathName='Y:/mp16_v2.cae')
+mdb.copyAuxMdbModel(fromName='Model-1', toName='Model-1')
+mdb.copyAuxMdbModel(fromName='Model-1', toName='Model-1')
+mdb.closeAuxMdb()
+mdb.models['Model-1'].rootAssembly.Set(name='Set-1', vertices=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].vertices.getSequenceFromMask(
+    ('[#f ]', ), ))
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Initial', 
+    distributionType=UNIFORM, fieldName='', localCsys=None, name='fixed', 
+    region=mdb.models['Model-1'].rootAssembly.sets['Set-1'], u1=SET, u2=SET, 
+    u3=SET, ur1=SET, ur2=SET, ur3=SET)
+# Save by 10992702 on 2024_02_18-17.45.08; build 2024 2023_09_21-14.55.25 RELr426 190762
+# Save by 10992702 on 2024_02_18-17.45.10; build 2024 2023_09_21-14.55.25 RELr426 190762
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].parts['Part-1'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=5.0)
+mdb.models['Model-1'].parts['Part-1'].generateMesh()
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].rootAssembly.Surface(name='Surf-1', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#1 ]', ), ))
+mdb.models['Model-1'].Pressure(createStepName='uniformed_load', 
+    distributionType=UNIFORM, field='', magnitude=0.001, name='uniformed_load', 
+    region=mdb.models['Model-1'].rootAssembly.surfaces['Surf-1'])
+# Save by 10992702 on 2024_02_18-17.46.26; build 2024 2023_09_21-14.55.25 RELr426 190762
+# Save by 10992702 on 2024_02_18-17.47.40; build 2024 2023_09_21-14.55.25 RELr426 190762
+# Save by 10992702 on 2024_02_18-18.49.56; build 2024 2023_09_21-14.55.25 RELr426 190762
+# Save by 10992702 on 2024_02_18-18.49.56; build 2024 2023_09_21-14.55.25 RELr426 190762

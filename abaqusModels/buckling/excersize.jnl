@@ -1,0 +1,211 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=200.0)
+mdb.models['Model-1'].sketches['__profile__'].CircleByCenterPerimeter(center=(
+    0.0, 0.0), point1=(250.0, 0.0))
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='excersize', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['excersize'].BaseShellExtrude(depth=500.0, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+# Save by 10992702 on 2024_02_17-14.06.13; build 2024 2023_09_21-14.55.25 RELr426 190762
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].Material(name='alu')
+mdb.models['Model-1'].materials['alu'].Elastic(table=((72000.0, 0.35), ))
+mdb.models['Model-1'].materials['alu'].Plastic(scaleStress=None, table=((160.0, 
+    0.0), (340.0, 0.3)))
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='excersize-1', 
+    part=mdb.models['Model-1'].parts['excersize'])
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=(0.0, 0.0, 0.0))
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['excersize-1'].InterestingPoint(
+    mdb.models['Model-1'].rootAssembly.instances['excersize-1'].edges[0], 
+    CENTER))
+mdb.models['Model-1'].HomogeneousShellSection(idealization=NO_IDEALIZATION, 
+    integrationRule=SIMPSON, material='alu', name='Section-1', 
+    nodalThicknessField='', numIntPts=5, poissonDefinition=DEFAULT, 
+    preIntegrate=OFF, temperature=GRADIENT, thickness=2.0, thicknessField='', 
+    thicknessModulus=None, thicknessType=UNIFORM, useDensity=OFF)
+mdb.models['Model-1'].parts['excersize'].Set(faces=
+    mdb.models['Model-1'].parts['excersize'].faces.getSequenceFromMask((
+    '[#1 ]', ), ), name='Set-1')
+mdb.models['Model-1'].parts['excersize'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['excersize'].sets['Set-1'], sectionName=
+    'Section-1', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.regenerate()
+# Save by 10992702 on 2024_02_17-14.12.27; build 2024 2023_09_21-14.55.25 RELr426 190762
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].rootAssembly.Set(name='m_Set-1', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[4], ))
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['excersize-1'].edges.getSequenceFromMask(
+    ('[#2 ]', ), ), name='s_Set-1')
+mdb.models['Model-1'].Coupling(alpha=0.0, controlPoint=
+    mdb.models['Model-1'].rootAssembly.sets['m_Set-1'], couplingType=KINEMATIC, 
+    influenceRadius=WHOLE_SURFACE, localCsys=None, name='rp1', surface=
+    mdb.models['Model-1'].rootAssembly.sets['s_Set-1'], u1=ON, u2=ON, u3=ON, 
+    ur1=ON, ur2=ON, ur3=ON)
+mdb.models['Model-1'].rootAssembly.Set(name='m_Set-3', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[5], ))
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['excersize-1'].edges.getSequenceFromMask(
+    ('[#1 ]', ), ), name='s_Set-3')
+mdb.models['Model-1'].Coupling(alpha=0.0, controlPoint=
+    mdb.models['Model-1'].rootAssembly.sets['m_Set-3'], couplingType=KINEMATIC, 
+    influenceRadius=WHOLE_SURFACE, localCsys=None, name='rp2', surface=
+    mdb.models['Model-1'].rootAssembly.sets['s_Set-3'], u1=ON, u2=ON, u3=ON, 
+    ur1=ON, ur2=ON, ur3=ON)
+mdb.models['Model-1'].rootAssembly.Set(name='Set-5', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[4], ))
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Initial', 
+    distributionType=UNIFORM, fieldName='', localCsys=None, name='encaster', 
+    region=mdb.models['Model-1'].rootAssembly.sets['Set-5'], u1=SET, u2=SET, 
+    u3=SET, ur1=SET, ur2=SET, ur3=SET)
+# Save by 10992702 on 2024_02_17-14.15.54; build 2024 2023_09_21-14.55.25 RELr426 190762
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].BuckleStep(maxIterations=6500, name='lin_pert', numEigen=
+    3, previous='Initial', vectors=6)
+mdb.models['Model-1'].parts['excersize'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=10.0)
+mdb.models['Model-1'].parts['excersize'].generateMesh()
+# Save by 10992702 on 2024_02_17-14.17.48; build 2024 2023_09_21-14.55.25 RELr426 190762
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='lp_coarse', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, numThreadsPerMpiProcess=1, queue=None, resultsFormat=
+    ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=0, 
+    waitMinutes=0)
+mdb.models['Model-1'].parts['excersize'].deleteMesh()
+mdb.models['Model-1'].parts['excersize'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=5.0)
+mdb.models['Model-1'].parts['excersize'].generateMesh()
+# Save by 10992702 on 2024_02_17-14.22.30; build 2024 2023_09_21-14.55.25 RELr426 190762
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='lp_fine', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, numThreadsPerMpiProcess=1, queue=None, resultsFormat=
+    ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=0, 
+    waitMinutes=0)
+mdb.jobs['lp_fine'].submit(consistencyChecking=OFF)
+mdb.jobs['lp_fine']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'jobName': 'lp_fine', 'clientHost': 'vwhresxaas04', 'handle': 0})
+mdb.jobs['lp_fine']._Message(ODB_FILE, {'file': 'Y:\\lp_fine.odb', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(COMPLETED, {'message': 'Analysis phase complete', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'jobName': 'lp_fine', 'clientHost': 'vwhresxaas04', 'handle': 10820})
+mdb.jobs['lp_fine']._Message(STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(ODB_FRAME, {'step': 0, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(MEMORY_ESTIMATE, {'memory': 617.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(MINIMUM_MEMORY, {'minimum_memory': 105.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(MEMORY_ESTIMATE, {'memory': 638.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(MINIMUM_MEMORY, {'minimum_memory': 105.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(ERROR, {
+    'message': 'DIFFERENTIAL STIFFNESS MATRIX IS COMPLETELY NULL.  THE EIGENPROBLEM CANNOT BE SOLVED.  IN A *BUCKLE ANALYSIS THE MOST LIKELY CAUSE IS THAT A NONZERO LOADING PATTERN WAS NOT SPECIFIED VIA *BOUNDARY, *CLOAD, *DLOAD, ETC,.  SEE Eigenvalue Buckling Prediction IN THE Abaqus/Standard USERS MANUAL.', 
+    'phase': STANDARD_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(ABORTED, {
+    'message': 'Analysis phase failed due to errors', 'phase': STANDARD_PHASE, 
+    'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(ERROR, {
+    'message': 'Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.', 
+    'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(JOB_ABORTED, {
+    'message': 'Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.', 
+    'jobName': 'lp_fine'})
+mdb.models['Model-1'].rootAssembly.Set(name='Set-6', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[5], ))
+mdb.models['Model-1'].ConcentratedForce(cf3=-1.0, createStepName='lin_pert', 
+    distributionType=UNIFORM, field='', localCsys=None, name='lp', region=
+    mdb.models['Model-1'].rootAssembly.sets['Set-6'])
+# Save by 10992702 on 2024_02_17-16.28.43; build 2024 2023_09_21-14.55.25 RELr426 190762

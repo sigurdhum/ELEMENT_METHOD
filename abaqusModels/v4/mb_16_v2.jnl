@@ -1,0 +1,581 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=200.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(45.0, 25.0))
+mdb.models['Model-1'].sketches['__profile__'].ObliqueDimension(textPoint=(
+    -16.5716514587402, 14.2221069335938), value=221.2, vertex1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[0], vertex2=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[1])
+mdb.models['Model-1'].sketches['__profile__'].ObliqueDimension(textPoint=(
+    20.9518432617188, 30.7727699279785), value=312.6, vertex1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[1], vertex2=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[2])
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='mb_16', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['mb_16'].BaseSolidExtrude(depth=15.5, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].parts['mb_16'].AssignMidsurfaceRegion(cellList=
+    mdb.models['Model-1'].parts['mb_16'].cells.getSequenceFromMask(mask=(
+    '[#1 ]', ), ))
+# Save by 10992702 on 2024_02_16-12.41.44; build 2024 2023_09_21-14.55.25 RELr426 190762
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].parts['mb_16'].OffsetFaces(faceList=
+    mdb.models['Model-1'].parts['mb_16'].faces.getSequenceFromMask(mask=(
+    '[#2 ]', ), ), targetFaces=
+    mdb.models['Model-1'].parts['mb_16'].faces.getSequenceFromMask(mask=(
+    '[#8 ]', ), ), targetFacesMethod=HALF_OF_AVERAGE, trimToReferenceRep=False)
+# Save by 10992702 on 2024_02_16-12.57.54; build 2024 2023_09_21-14.55.25 RELr426 190762
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].Material(name='mb_alu')
+mdb.models['Model-1'].materials['mb_alu'].Elastic(table=((72000.0, 0.333), ))
+mdb.models['Model-1'].HomogeneousShellSection(idealization=NO_IDEALIZATION, 
+    integrationRule=SIMPSON, material='mb_alu', name='mb_sec', 
+    nodalThicknessField='', numIntPts=5, poissonDefinition=DEFAULT, 
+    preIntegrate=OFF, temperature=GRADIENT, thickness=15.5, thicknessField='', 
+    thicknessModulus=None, thicknessType=UNIFORM, useDensity=OFF)
+mdb.models['Model-1'].parts['mb_16'].Set(faces=
+    mdb.models['Model-1'].parts['mb_16'].faces.getSequenceFromMask(('[#1 ]', ), 
+    ), name='Set-1')
+mdb.models['Model-1'].parts['mb_16'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['mb_16'].sets['Set-1'], sectionName='mb_sec', 
+    thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].StaticLinearPerturbationStep(name='uniform_load', 
+    previous='Initial')
+mdb.models['Model-1'].StaticLinearPerturbationStep(name='seveal_load', 
+    previous='uniform_load')
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='mb_16-1', part=
+    mdb.models['Model-1'].parts['mb_16'])
+mdb.models['Model-1'].rootAssembly.Set(name='Set-1', vertices=
+    mdb.models['Model-1'].rootAssembly.instances['mb_16-1'].vertices.getSequenceFromMask(
+    ('[#f ]', ), ))
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName=
+    'seveal_load', distributionType=UNIFORM, fieldName='', fixed=OFF, 
+    localCsys=None, name='feets', region=
+    mdb.models['Model-1'].rootAssembly.sets['Set-1'], u1=0.0, u2=0.0, u3=0.0, 
+    ur1=0.0, ur2=0.0, ur3=0.0)
+mdb.models['Model-1'].parts['mb_16'].checkGeometry()
+mdb.models['Model-1'].ConstrainedSketch(gridSpacing=19.15, name='__profile__', 
+    sheetSize=766.05, transform=
+    mdb.models['Model-1'].parts['mb_16'].MakeSketchTransform(
+    sketchPlane=mdb.models['Model-1'].parts['mb_16'].faces[0], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['Model-1'].parts['mb_16'].edges[2], 
+    sketchOrientation=RIGHT, origin=(156.3, -85.6, 7.75)))
+mdb.models['Model-1'].parts['mb_16'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__profile__'])
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(-38.3, -38.3), 
+    point2=(38.3, 38.3))
+mdb.models['Model-1'].parts['mb_16'].PartitionFaceBySketch(faces=
+    mdb.models['Model-1'].parts['mb_16'].faces.getSequenceFromMask(('[#1 ]', ), 
+    ), sketch=mdb.models['Model-1'].sketches['__profile__'], sketchUpEdge=
+    mdb.models['Model-1'].parts['mb_16'].edges[2])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].boundaryConditions['feets'].move('seveal_load', 
+    'Initial')
+#* Cannot move a boundary condition created in a perturbation step.
+del mdb.models['Model-1'].boundaryConditions['feets']
+mdb.models['Model-1'].rootAssembly.Set(name='Set-2', vertices=
+    mdb.models['Model-1'].rootAssembly.instances['mb_16-1'].vertices.getSequenceFromMask(
+    ('[#f ]', ), ))
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Initial', 
+    distributionType=UNIFORM, fieldName='', localCsys=None, name='fixed_BC', 
+    region=mdb.models['Model-1'].rootAssembly.sets['Set-2'], u1=SET, u2=SET, 
+    u3=SET, ur1=SET, ur2=SET, ur3=SET)
+# Save by 10992702 on 2024_02_16-14.45.42; build 2024 2023_09_21-14.55.25 RELr426 190762
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['mb_16-1'].InterestingPoint(
+    mdb.models['Model-1'].rootAssembly.instances['mb_16-1'].edges[5], MIDDLE))
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.referencePoints[6])
+# Save by 10992702 on 2024_02_16-14.48.55; build 2024 2023_09_21-14.55.25 RELr426 190762
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].rootAssembly.deleteFeatures(('RP-1', 'RP-2'))
+# Save by 10992702 on 2024_02_16-14.50.37; build 2024 2023_09_21-14.55.25 RELr426 190762
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].parts['mb_16'].PartitionEdgeByParam(edges=
+    mdb.models['Model-1'].parts['mb_16'].edges.getSequenceFromMask(('[#40 ]', 
+    ), ), parameter=0.535287762435236)
+mdb.models['Model-1'].ConstrainedSketch(gridSpacing=19.14, name='__profile__', 
+    sheetSize=765.89, transform=
+    mdb.models['Model-1'].parts['mb_16'].MakeSketchTransform(
+    sketchPlane=mdb.models['Model-1'].parts['mb_16'].faces[0], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['Model-1'].parts['mb_16'].edges[2], 
+    sketchOrientation=RIGHT, origin=(156.3, -85.6, 7.75)))
+mdb.models['Model-1'].parts['mb_16'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].parts['mb_16'].deleteFeatures(('Partition face-1', 
+    'Partition edge-1'))
+mdb.models['Model-1'].ConstrainedSketch(gridSpacing=19.15, name='__profile__', 
+    sheetSize=766.05, transform=
+    mdb.models['Model-1'].parts['mb_16'].MakeSketchTransform(
+    sketchPlane=mdb.models['Model-1'].parts['mb_16'].faces[0], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['Model-1'].parts['mb_16'].edges[2], 
+    sketchOrientation=RIGHT, origin=(156.3, -85.6, 7.75)))
+mdb.models['Model-1'].parts['mb_16'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__profile__'])
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(-38.3, -38.3), 
+    point2=(0.0, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(38.3, -38.3))
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(38.3, 0.0), 
+    point2=(0.0, 38.3))
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 38.3), 
+    point2=(-38.3, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(-19.15, 19.15), 
+    point2=(0.0, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(19.15, 19.15))
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(19.15, -19.15))
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, -19.15), 
+    point2=(-19.15, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(-28.725, 
+    28.725), point2=(28.725, -28.725))
+mdb.models['Model-1'].parts['mb_16'].PartitionFaceBySketch(faces=
+    mdb.models['Model-1'].parts['mb_16'].faces.getSequenceFromMask(('[#1 ]', ), 
+    ), sketch=mdb.models['Model-1'].sketches['__profile__'], sketchUpEdge=
+    mdb.models['Model-1'].parts['mb_16'].edges[2])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['mb_16-1'].InterestingPoint(
+    mdb.models['Model-1'].rootAssembly.instances['mb_16-1'].edges[29], MIDDLE))
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['mb_16-1'].InterestingPoint(
+    mdb.models['Model-1'].rootAssembly.instances['mb_16-1'].edges[34], MIDDLE))
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['mb_16-1'].InterestingPoint(
+    mdb.models['Model-1'].rootAssembly.instances['mb_16-1'].edges[32], MIDDLE))
+mdb.models['Model-1'].rootAssembly.Surface(name='Surf-1', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['mb_16-1'].faces.getSequenceFromMask(
+    ('[#1ffb ]', ), ))
+mdb.models['Model-1'].Pressure(createStepName='uniform_load', distributionType=
+    UNIFORM, field='', magnitude=0.0001, name='uniformed_load', region=
+    mdb.models['Model-1'].rootAssembly.surfaces['Surf-1'])
+mdb.models['Model-1'].rootAssembly.Set(name='Set-3', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[8], 
+    mdb.models['Model-1'].rootAssembly.referencePoints[9], 
+    mdb.models['Model-1'].rootAssembly.referencePoints[10]))
+mdb.models['Model-1'].ConcentratedForce(cf3=-0.005, createStepName=
+    'seveal_load', distributionType=UNIFORM, field='', localCsys=None, name='P'
+    , region=mdb.models['Model-1'].rootAssembly.sets['Set-3'])
+mdb.models['Model-1'].parts['mb_16'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=4.0)
+mdb.models['Model-1'].parts['mb_16'].generateMesh()
+mdb.models['Model-1'].rootAssembly.regenerate()
+# Save by 10992702 on 2024_02_16-15.20.11; build 2024 2023_09_21-14.55.25 RELr426 190762
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='mb_us_randomM', nodalOutputPrecision=
+    SINGLE, numCpus=1, numGPUs=0, numThreadsPerMpiProcess=1, queue=None, 
+    resultsFormat=ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=
+    0, waitMinutes=0)
+mdb.jobs['mb_us_randomM'].submit(consistencyChecking=OFF)
+mdb.jobs['mb_us_randomM']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'jobName': 'mb_us_randomM', 'clientHost': 'vwhresxaas18', 'handle': 0})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'NODE SET ASSEMBLY_SET-3 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(ERROR, {
+    'message': 'NODE SET ASSEMBLY_SET-3 HAS NOT BEEN DEFINED', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(ERROR, {
+    'message': 'A CONCENTRATED LOAD HAS BEEN SPECIFIED ON NODE SET ASSEMBLY_SET-3.  THIS NODE SET IS NOT ACTIVE IN THE MODEL', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(ODB_FILE, {'file': 'Y:\\mb_us_randomM.odb', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(ABORTED, {
+    'message': 'Analysis phase failed due to errors', 'phase': BATCHPRE_PHASE, 
+    'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(ERROR, {
+    'message': 'Analysis Input File Processor exited with an error - Please see the  mb_us_randomM.dat file for possible error messages if the file exists.', 
+    'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(JOB_ABORTED, {
+    'message': 'Analysis Input File Processor exited with an error - Please see the  mb_us_randomM.dat file for possible error messages if the file exists.', 
+    'jobName': 'mb_us_randomM'})
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=(
+    'S', 'LE', 'U', 'RF', 'CF', 'SF'))
+mdb.jobs['mb_us_randomM'].submit(consistencyChecking=OFF)
+mdb.jobs['mb_us_randomM']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'jobName': 'mb_us_randomM', 'clientHost': 'vwhresxaas18', 'handle': 0})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'NODE SET ASSEMBLY_SET-3 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(ERROR, {
+    'message': 'NODE SET ASSEMBLY_SET-3 HAS NOT BEEN DEFINED', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(ERROR, {
+    'message': 'A CONCENTRATED LOAD HAS BEEN SPECIFIED ON NODE SET ASSEMBLY_SET-3.  THIS NODE SET IS NOT ACTIVE IN THE MODEL', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(ODB_FILE, {'file': 'Y:\\mb_us_randomM.odb', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(ABORTED, {
+    'message': 'Analysis phase failed due to errors', 'phase': BATCHPRE_PHASE, 
+    'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(ERROR, {
+    'message': 'Analysis Input File Processor exited with an error - Please see the  mb_us_randomM.dat file for possible error messages if the file exists.', 
+    'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(JOB_ABORTED, {
+    'message': 'Analysis Input File Processor exited with an error - Please see the  mb_us_randomM.dat file for possible error messages if the file exists.', 
+    'jobName': 'mb_us_randomM'})
+del mdb.models['Model-1'].loads['P']
+mdb.jobs['mb_us_randomM'].submit(consistencyChecking=OFF)
+mdb.jobs['mb_us_randomM']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'jobName': 'mb_us_randomM', 'clientHost': 'vwhresxaas18', 'handle': 0})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'NODE SET ASSEMBLY_SET-3 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(ODB_FILE, {'file': 'Y:\\mb_us_randomM.odb', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(COMPLETED, {
+    'message': 'Analysis phase complete', 'phase': BATCHPRE_PHASE, 
+    'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'jobName': 'mb_us_randomM', 'clientHost': 'vwhresxaas18', 'handle': 4916})
+mdb.jobs['mb_us_randomM']._Message(STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(ODB_FRAME, {'step': 0, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(MEMORY_ESTIMATE, {'memory': 99.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(PHYSICAL_MEMORY, {
+    'physical_memory': 16384.0, 'phase': STANDARD_PHASE, 
+    'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(MINIMUM_MEMORY, {'minimum_memory': 28.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(ODB_FRAME, {'step': 0, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(STATUS, {'step': 1, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(END_STEP, {'stepId': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(STEP, {'stepId': 2, 'phase': STANDARD_PHASE, 
+    'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(ODB_FRAME, {'step': 1, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(MEMORY_ESTIMATE, {'memory': 86.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(PHYSICAL_MEMORY, {
+    'physical_memory': 16384.0, 'phase': STANDARD_PHASE, 
+    'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(ODB_FRAME, {'step': 1, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(STATUS, {'step': 2, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(END_STEP, {'stepId': 2, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(COMPLETED, {
+    'message': 'Analysis phase complete', 'phase': STANDARD_PHASE, 
+    'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(JOB_COMPLETED, {
+    'time': 'Fri Feb 16 15:24:00 2024', 'jobName': 'mb_us_randomM'})
+# Save by 10992702 on 2024_02_16-15.24.59; build 2024 2023_09_21-14.55.25 RELr426 190762
+# Save by 10992702 on 2024_02_16-15.42.51; build 2024 2023_09_21-14.55.25 RELr426 190762
+# Save by 10992702 on 2024_02_16-15.47.21; build 2024 2023_09_21-14.55.25 RELr426 190762
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].rootAssembly.Set(name='Set-4', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[8], 
+    mdb.models['Model-1'].rootAssembly.referencePoints[9], 
+    mdb.models['Model-1'].rootAssembly.referencePoints[10]))
+mdb.models['Model-1'].ConcentratedForce(cf3=-0.005, createStepName=
+    'seveal_load', distributionType=UNIFORM, field='', localCsys=None, name=
+    'concentrated_force', region=
+    mdb.models['Model-1'].rootAssembly.sets['Set-4'])
+mdb.models['Model-1'].rootAssembly.Set(name='m_Set-5', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[8], 
+    mdb.models['Model-1'].rootAssembly.referencePoints[9], 
+    mdb.models['Model-1'].rootAssembly.referencePoints[10]))
+mdb.models['Model-1'].rootAssembly.Surface(name='s_Surf-2', side1Edges=
+    mdb.models['Model-1'].rootAssembly.instances['mb_16-1'].edges.getSequenceFromMask(
+    ('[#0 #20 ]', ), ), side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['mb_16-1'].faces.getSequenceFromMask(
+    ('[#1fff ]', ), ))
+#* Surface containing both 3D shell faces and 3D shell edges is not yet 
+#* supported.
+mdb.models['Model-1'].rootAssembly.Set(name='m_Set-6', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[10], ))
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['mb_16-1'].edges.getSequenceFromMask(
+    ('[#0 #1 ]', ), ), name='s_Set-6')
+mdb.models['Model-1'].Coupling(alpha=0.0, controlPoint=
+    mdb.models['Model-1'].rootAssembly.sets['m_Set-6'], couplingType=KINEMATIC, 
+    influenceRadius=WHOLE_SURFACE, localCsys=None, name='Constraint-1', 
+    surface=mdb.models['Model-1'].rootAssembly.sets['s_Set-6'], u1=ON, u2=ON, 
+    u3=ON, ur1=ON, ur2=ON, ur3=ON)
+mdb.models['Model-1'].rootAssembly.Set(name='m_Set-8', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[8], 
+    mdb.models['Model-1'].rootAssembly.referencePoints[9], 
+    mdb.models['Model-1'].rootAssembly.referencePoints[10]))
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['mb_16-1'].edges.getSequenceFromMask(
+    ('[#20000000 #5 ]', ), ), name='s_Set-8')
+mdb.models['Model-1'].Coupling(alpha=0.0, controlPoint=
+    mdb.models['Model-1'].rootAssembly.sets['m_Set-8'], couplingType=KINEMATIC, 
+    influenceRadius=WHOLE_SURFACE, localCsys=None, name='coupling', surface=
+    mdb.models['Model-1'].rootAssembly.sets['s_Set-8'], u1=ON, u2=ON, u3=ON, 
+    ur1=ON, ur2=ON, ur3=ON)
+del mdb.models['Model-1'].constraints['Constraint-1']
+del mdb.models['Model-1'].constraints['coupling']
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['mb_16-1'].faces.getSequenceFromMask(
+    ('[#200 ]', ), ), name='b_Set-10')
+mdb.models['Model-1'].RigidBody(bodyRegion=
+    mdb.models['Model-1'].rootAssembly.sets['b_Set-10'], name='rb', 
+    refPointRegion=Region(referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[9], )))
+del mdb.models['Model-1'].constraints['rb']
+# Save by 10992702 on 2024_02_16-16.02.02; build 2024 2023_09_21-14.55.25 RELr426 190762
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+del mdb.models['Model-1'].loads['concentrated_force']
+mdb.models['Model-1'].rootAssembly.Set(name='Set-11', vertices=
+    mdb.models['Model-1'].rootAssembly.instances['mb_16-1'].vertices.getSequenceFromMask(
+    ('[#8800020 ]', ), ))
+mdb.models['Model-1'].ConcentratedForce(cf3=-0.0005, createStepName=
+    'seveal_load', distributionType=UNIFORM, field='', localCsys=None, name=
+    'concentrated_force', region=
+    mdb.models['Model-1'].rootAssembly.sets['Set-11'])
+mdb.jobs['mb_us_randomM'].submit(consistencyChecking=OFF)
+mdb.jobs['mb_us_randomM']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'jobName': 'mb_us_randomM', 'clientHost': 'vwhresxaas18', 'handle': 0})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'NODE SET ASSEMBLY_M_SET-5 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'NODE SET ASSEMBLY_M_SET-6 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'NODE SET ASSEMBLY_M_SET-8 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'NODE SET ASSEMBLY_SET-3 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'NODE SET ASSEMBLY_SET-4 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(ODB_FILE, {'file': 'Y:\\mb_us_randomM.odb', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(COMPLETED, {
+    'message': 'Analysis phase complete', 'phase': BATCHPRE_PHASE, 
+    'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'jobName': 'mb_us_randomM', 'clientHost': 'vwhresxaas18', 'handle': 484})
+mdb.jobs['mb_us_randomM']._Message(STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(ODB_FRAME, {'step': 0, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(MEMORY_ESTIMATE, {'memory': 99.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(PHYSICAL_MEMORY, {
+    'physical_memory': 16384.0, 'phase': STANDARD_PHASE, 
+    'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(MINIMUM_MEMORY, {'minimum_memory': 28.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(ODB_FRAME, {'step': 0, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(STATUS, {'step': 1, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(END_STEP, {'stepId': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(STEP, {'stepId': 2, 'phase': STANDARD_PHASE, 
+    'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(ODB_FRAME, {'step': 1, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(MEMORY_ESTIMATE, {'memory': 86.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(PHYSICAL_MEMORY, {
+    'physical_memory': 16384.0, 'phase': STANDARD_PHASE, 
+    'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(ODB_FRAME, {'step': 1, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(STATUS, {'step': 2, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(END_STEP, {'stepId': 2, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(COMPLETED, {
+    'message': 'Analysis phase complete', 'phase': STANDARD_PHASE, 
+    'jobName': 'mb_us_randomM'})
+mdb.jobs['mb_us_randomM']._Message(JOB_COMPLETED, {
+    'time': 'Fri Feb 16 16:35:08 2024', 'jobName': 'mb_us_randomM'})
+# Save by 10992702 on 2024_02_16-16.36.03; build 2024 2023_09_21-14.55.25 RELr426 190762

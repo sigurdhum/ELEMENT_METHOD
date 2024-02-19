@@ -1,0 +1,1229 @@
+# -*- coding: mbcs -*-
+#
+# Abaqus/CAE Release 2023 replay file
+# Internal Version: 2022_09_28-20.11.55 183150
+# Run by 10992702 on Thu Feb 15 13:50:01 2024
+#
+
+# from driverUtils import executeOnCaeGraphicsStartup
+# executeOnCaeGraphicsStartup()
+#: Executing "onCaeGraphicsStartup()" in the site directory ...
+#: Warning: Permission was denied for "abaqus.rpy"; "abaqus.rpy.1" will be used for this session's replay file.
+from abaqus import *
+from abaqusConstants import *
+session.Viewport(name='Viewport: 1', origin=(0.0, 0.0), width=193.77392578125, 
+    height=197.34196472168)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].maximize()
+from caeModules import *
+from driverUtils import executeOnCaeStartup
+executeOnCaeStartup()
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=ON)
+#--- Recover file: 'abaqus1.rec' ---
+# -*- coding: mbcs -*- 
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=200.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(38.75, 21.25))
+#--- End of Recover file ------
+del mdb.models['Model-1'].sketches['__profile__']
+s = mdb.models['Model-1'].ConstrainedSketch(name='__profile__', 
+    sheetSize=350.0)
+g, v, d, c = s.geometry, s.vertices, s.dimensions, s.constraints
+s.setPrimaryObject(option=STANDALONE)
+s.rectangle(point1=(0.0, 0.0), point2=(90.0, 50.0))
+s.unsetPrimaryObject()
+del mdb.models['Model-1'].sketches['__profile__']
+s1 = mdb.models['Model-1'].ConstrainedSketch(name='__profile__', 
+    sheetSize=350.0)
+g, v, d, c = s1.geometry, s1.vertices, s1.dimensions, s1.constraints
+s1.setPrimaryObject(option=STANDALONE)
+s1.rectangle(point1=(0.0, 0.0), point2=(312.6, 0.0))
+#* Rectangle cannot be created.
+s1.rectangle(point1=(0.0, 0.0), point2=(312.6, 221.2))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=171.307, 
+    farPlane=488.659, width=2314.39, height=1122.51, cameraPosition=(-318.268, 
+    -216.501, 329.983), cameraTarget=(-318.268, -216.501, 0))
+session.viewports['Viewport: 1'].view.setValues(cameraPosition=(477.012, 
+    84.5184, 329.983), cameraTarget=(477.012, 84.5184, 0))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=270.782, 
+    farPlane=389.184, width=762.978, height=370.052, cameraPosition=(292.467, 
+    105.076, 329.983), cameraTarget=(292.467, 105.076, 0))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=274.334, 
+    farPlane=385.632, cameraPosition=(226.826, 91.0621, 329.983), 
+    cameraTarget=(226.826, 91.0621, 0))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=274.334, 
+    farPlane=385.632, cameraPosition=(234.162, 97.8799, 329.983), 
+    cameraTarget=(234.162, 97.8799, 0))
+p = mdb.models['Model-1'].Part(name='Part-1', dimensionality=THREE_D, 
+    type=DEFORMABLE_BODY)
+p = mdb.models['Model-1'].parts['Part-1']
+p.BaseSolidExtrude(sketch=s1, depth=15.5)
+s1.unsetPrimaryObject()
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+del mdb.models['Model-1'].sketches['__profile__']
+session.viewports['Viewport: 1'].view.setValues(nearPlane=613.821, 
+    farPlane=1012.08, width=529.467, height=249.437, viewOffsetX=29.7423, 
+    viewOffsetY=-1.05137)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=615.643, 
+    farPlane=1010.26, width=531.039, height=250.178, viewOffsetX=18.0058, 
+    viewOffsetY=-1.05449)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=615.651, 
+    farPlane=1010.25, width=531.046, height=250.181, viewOffsetX=55.0932, 
+    viewOffsetY=-8.69965)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=615.65, 
+    farPlane=1010.25, width=531.046, height=250.181, viewOffsetX=42.9995, 
+    viewOffsetY=7.38154)
+session.viewports['Viewport: 1'].view.setValues(viewOffsetX=50.5245, 
+    viewOffsetY=7.11793)
+session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=ON, 
+    engineeringFeatures=ON)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=OFF)
+mdb.models['Model-1'].Material(name='alu')
+mdb.models['Model-1'].materials['alu'].Elastic(table=((72000.0, 0.333), ))
+mdb.models['Model-1'].HomogeneousSolidSection(name='section', material='alu', 
+    thickness=None)
+p = mdb.models['Model-1'].parts['Part-1']
+c = p.cells
+cells = c.getSequenceFromMask(mask=('[#1 ]', ), )
+region = p.Set(cells=cells, name='Set-1')
+p = mdb.models['Model-1'].parts['Part-1']
+p.SectionAssignment(region=region, sectionName='section', offset=0.0, 
+    offsetType=MIDDLE_SURFACE, offsetField='', 
+    thicknessAssignment=FROM_SECTION)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    optimizationTasks=OFF, geometricRestrictions=OFF, stopConditions=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    adaptiveMeshConstraints=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=ON, bcs=ON, 
+    predefinedFields=ON, connectors=ON, adaptiveMeshConstraints=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON, loads=OFF, 
+    bcs=OFF, predefinedFields=OFF, connectors=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=OFF, 
+    engineeringFeatures=OFF, mesh=ON)
+session.viewports['Viewport: 1'].partDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+p = mdb.models['Model-1'].parts['Part-1']
+p.seedPart(size=10.0, deviationFactor=0.1, minSizeFactor=0.1)
+p = mdb.models['Model-1'].parts['Part-1']
+p.generateMesh()
+mdb.saveAs(pathName='Y:/mb_16_v1')
+#: The model database has been saved to "Y:\mb_16_v1.cae".
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+a = mdb.models['Model-1'].rootAssembly
+a.DatumCsysByDefault(CARTESIAN)
+p = mdb.models['Model-1'].parts['Part-1']
+a.Instance(name='Part-1-1', part=p, dependent=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    adaptiveMeshConstraints=ON)
+mdb.models['Model-1'].StaticStep(name='load', previous='Initial')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='load')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=ON, bcs=ON, 
+    predefinedFields=ON, connectors=ON, adaptiveMeshConstraints=OFF)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=595.769, 
+    farPlane=1038.76, width=513.895, height=242.101, cameraPosition=(818.936, 
+    494.873, 292.94), cameraUpVector=(-0.636036, 0.664525, -0.392256), 
+    cameraTarget=(167.147, 106.493, 1.01037))
+mdb.save()
+#: The model database has been saved to "Y:\mb_16_v1.cae".
+session.viewports['Viewport: 1'].view.setValues(nearPlane=647.177, 
+    farPlane=963.265, width=558.238, height=262.992, cameraPosition=(-323.843, 
+    260.255, 636.609), cameraUpVector=(0.227332, 0.856645, -0.46312), 
+    cameraTarget=(161.114, 105.254, 2.8246))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=616.331, 
+    farPlane=994.97, width=531.631, height=250.457, cameraPosition=(-571.178, 
+    77.2513, 352.354), cameraUpVector=(0.239152, 0.951587, -0.193101), 
+    cameraTarget=(163.489, 107.011, 5.55386))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=657.638, 
+    farPlane=953.087, width=567.262, height=267.243, cameraPosition=(-255.148, 
+    -56.5536, -664.109), cameraUpVector=(0.267386, 0.963588, 0.00152367), 
+    cameraTarget=(160.625, 108.224, 14.7669))
+session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=ON, 
+    engineeringFeatures=ON, mesh=OFF)
+session.viewports['Viewport: 1'].partDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=OFF, bcs=OFF, 
+    predefinedFields=OFF, connectors=OFF)
+session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=OFF, 
+    engineeringFeatures=OFF)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=ON)
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=ON, 
+    engineeringFeatures=ON)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=OFF)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=631.87, 
+    farPlane=974.211, width=545.037, height=256.773, cameraPosition=(639.83, 
+    358.565, 599.123), cameraUpVector=(-0.371265, 0.792458, -0.483913), 
+    cameraTarget=(159.814, 105.886, -6.37616), viewOffsetX=51.8556, 
+    viewOffsetY=7.30546)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=680.279, 
+    farPlane=842.774, width=586.794, height=276.445, cameraPosition=(266.847, 
+    1.16295, 753.674), cameraUpVector=(-0.2952, 0.935945, -0.192001), 
+    cameraTarget=(153.892, 90.9453, -46.3709), viewOffsetX=55.8284, 
+    viewOffsetY=7.86515)
+session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=OFF, 
+    engineeringFeatures=OFF)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=ON)
+p = mdb.models['Model-1'].parts['Part-1']
+c1 = p.cells
+p.AssignMidsurfaceRegion(cellList = c1[0:1])
+#: 
+#: The selected cells have been added as reference representation.
+session.viewports['Viewport: 1'].view.setValues(nearPlane=717.152, 
+    farPlane=805.901, width=41.0613, height=19.3444, viewOffsetX=-150.708, 
+    viewOffsetY=-31.8594)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=741.093, 
+    farPlane=1117.3, width=42.4321, height=21.4677, cameraPosition=(-390.315, 
+    -623.259, 220.414), cameraUpVector=(-0.260128, 0.725655, 0.636992), 
+    cameraTarget=(126.907, -0.328575, 147.409), viewOffsetX=-155.739, 
+    viewOffsetY=-32.923)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=706.299, 
+    farPlane=1152.09, width=457.79, height=231.61, viewOffsetX=-127.811, 
+    viewOffsetY=2.2048)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=731.778, 
+    farPlane=1038.77, width=474.304, height=239.965, cameraPosition=(326.157, 
+    -676.174, 401.293), cameraUpVector=(-0.380023, 0.594585, 0.708556), 
+    cameraTarget=(265.723, 82.2543, 114.892), viewOffsetX=-132.421, 
+    viewOffsetY=2.28433)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=725.901, 
+    farPlane=1044.65, width=566.462, height=286.591, viewOffsetX=-142.9, 
+    viewOffsetY=13.473)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=716.875, 
+    farPlane=1131.26, width=559.419, height=283.028, cameraPosition=(-172.07, 
+    -637.961, 457.754), cameraUpVector=(0.0901337, 0.739832, 0.666726), 
+    cameraTarget=(213.117, -9.54572, 114.801), viewOffsetX=-141.124, 
+    viewOffsetY=13.3055)
+p = mdb.models['Model-1'].parts['Part-1']
+f = p.faces
+f1 = p.faces
+p.OffsetFaces(faceList = f[1:2], targetFaces = f1[3:4], 
+    targetFacesMethod=HALF_OF_AVERAGE, trimToReferenceRep=False)
+#: 
+#: The distance used for offset is: 7.750000
+session.viewports['Viewport: 1'].view.setValues(nearPlane=640.904, 
+    farPlane=1084.11, width=500.135, height=253.034, cameraPosition=(1045.39, 
+    105.818, 7.32494), cameraUpVector=(-0.341055, -0.319898, 0.883938), 
+    cameraTarget=(257.785, 294.356, 78.2375), viewOffsetX=-126.168, 
+    viewOffsetY=11.8955)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=674.951, 
+    farPlane=1064.15, width=526.704, height=266.476, cameraPosition=(1022.02, 
+    314.925, -98.367), cameraUpVector=(-0.13753, -0.453322, 0.880673), 
+    cameraTarget=(229.298, 307.502, 81.7206), viewOffsetX=-132.871, 
+    viewOffsetY=12.5274)
+session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=ON, 
+    engineeringFeatures=ON)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=OFF)
+mdb.models['Model-1'].HomogeneousShellSection(name='shell_5mm', 
+    preIntegrate=OFF, material='alu', thicknessType=UNIFORM, thickness=5.0, 
+    thicknessField='', nodalThicknessField='', idealization=NO_IDEALIZATION, 
+    poissonDefinition=DEFAULT, thicknessModulus=None, temperature=GRADIENT, 
+    useDensity=OFF, integrationRule=SIMPSON, numIntPts=5)
+p = mdb.models['Model-1'].parts['Part-1']
+f = p.faces
+faces = f.getSequenceFromMask(mask=('[#1 ]', ), )
+region = p.Set(faces=faces, name='Set-2')
+p = mdb.models['Model-1'].parts['Part-1']
+p.SectionAssignment(region=region, sectionName='shell_5mm', offset=0.0, 
+    offsetType=MIDDLE_SURFACE, offsetField='', 
+    thicknessAssignment=FROM_SECTION)
+session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=OFF, 
+    engineeringFeatures=OFF)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=ON)
+session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=ON, 
+    engineeringFeatures=ON)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=OFF)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=673.265, 
+    farPlane=1065.83, width=525.388, height=265.811, viewOffsetX=-140.534, 
+    viewOffsetY=22.5796)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=661.204, 
+    farPlane=1099.23, width=515.978, height=261.049, cameraPosition=(966.334, 
+    510.957, 61.972), cameraUpVector=(-0.232111, -0.410827, 0.881672), 
+    cameraTarget=(175.832, 321.535, 72.9537), viewOffsetX=-138.017, 
+    viewOffsetY=22.1751)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=661.896, 
+    farPlane=1098.53, width=516.518, height=261.323, viewOffsetX=-122.161, 
+    viewOffsetY=-7.54127)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=615.343, 
+    farPlane=1073.28, width=480.19, height=242.943, cameraPosition=(975.487, 
+    -117.065, 183.115), cameraUpVector=(-0.451311, 0.223766, 0.863856), 
+    cameraTarget=(278.373, 272.779, 31.6283), viewOffsetX=-113.569, 
+    viewOffsetY=-7.01087)
+p = mdb.models['Model-1'].parts['Part-1']
+f = p.faces
+faces = f.getSequenceFromMask(mask=('[#1 ]', ), )
+regions = regionToolset.Region(faces=faces)
+p.flipNormal(regions=regions)
+a = mdb.models['Model-1'].rootAssembly
+a.regenerate()
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=622.781, 
+    farPlane=985.903, width=537.196, height=271.784, cameraPosition=(-489.919, 
+    160.655, -468.566), cameraUpVector=(0.454641, 0.88943, 0.0470817), 
+    cameraTarget=(162.838, 106.177, 12.9241))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=635.525, 
+    farPlane=974.06, width=548.189, height=277.346, cameraPosition=(-438.946, 
+    60.2256, -531.556), cameraUpVector=(0.163541, 0.958373, 0.234042), 
+    cameraTarget=(162.292, 107.252, 13.5984))
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=ON, bcs=ON, 
+    predefinedFields=ON, connectors=ON)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=718.614, 
+    farPlane=888.631, width=619.86, height=313.607, cameraPosition=(98.4312, 
+    276.635, -776.41), cameraUpVector=(0.0916291, 0.84975, 0.519161), 
+    cameraTarget=(156.844, 105.058, 16.0809))
+a = mdb.models['Model-1'].rootAssembly
+e1 = a.instances['Part-1-1'].edges
+edges1 = e1.getSequenceFromMask(mask=('[#5 ]', ), )
+region = a.Set(edges=edges1, name='Set-1')
+mdb.models['Model-1'].DisplacementBC(name='simple_supports', 
+    createStepName='load', region=region, u1=UNSET, u2=UNSET, u3=0.0, 
+    ur1=UNSET, ur2=UNSET, ur3=UNSET, amplitude=UNSET, fixed=OFF, 
+    distributionType=UNIFORM, fieldName='', localCsys=None)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=713.326, 
+    farPlane=893.92, width=615.299, height=311.299, viewOffsetX=19.3953, 
+    viewOffsetY=-9.51285)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=593.612, 
+    farPlane=976.031, width=512.037, height=259.056, cameraPosition=(833.503, 
+    50.8374, -386.332), cameraUpVector=(0.127795, -0.355304, 0.925974), 
+    cameraTarget=(125.647, 73.7511, 12.8009), viewOffsetX=16.1403, 
+    viewOffsetY=-7.91636)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=557.152, 
+    farPlane=1008.66, width=480.587, height=243.144, cameraPosition=(827.07, 
+    -246.136, 198.99), cameraUpVector=(-0.211402, 0.711076, 0.670582), 
+    cameraTarget=(116.138, 100.612, 11.2845), viewOffsetX=15.1489, 
+    viewOffsetY=-7.43013)
+a = mdb.models['Model-1'].rootAssembly
+v1 = a.instances['Part-1-1'].vertices
+verts1 = v1.getSequenceFromMask(mask=('[#4 ]', ), )
+region = a.Set(vertices=verts1, name='Set-2')
+mdb.models['Model-1'].DisplacementBC(name='BC-2', createStepName='load', 
+    region=region, u1=0.0, u2=0.0, u3=UNSET, ur1=UNSET, ur2=UNSET, ur3=UNSET, 
+    amplitude=UNSET, fixed=OFF, distributionType=UNIFORM, fieldName='', 
+    localCsys=None)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=581.296, 
+    farPlane=973.54, width=501.413, height=253.681, cameraPosition=(784.466, 
+    -93.3938, 418.999), cameraUpVector=(-0.554494, 0.644449, 0.526518), 
+    cameraTarget=(113.568, 92.7359, -0.694069), viewOffsetX=15.8054, 
+    viewOffsetY=-7.75212)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=577.166, 
+    farPlane=1001.47, width=497.851, height=251.879, cameraPosition=(-254.741, 
+    -538.715, 188.352), cameraUpVector=(0.298766, 0.449209, 0.841992), 
+    cameraTarget=(157.594, 137.042, 3.35771), viewOffsetX=15.6931, 
+    viewOffsetY=-7.69704)
+a = mdb.models['Model-1'].rootAssembly
+v1 = a.instances['Part-1-1'].vertices
+verts1 = v1.getSequenceFromMask(mask=('[#2 ]', ), )
+region = a.Set(vertices=verts1, name='Set-3')
+mdb.models['Model-1'].DisplacementBC(name='reduce_rotation', 
+    createStepName='load', region=region, u1=0.0, u2=UNSET, u3=UNSET, 
+    ur1=UNSET, ur2=UNSET, ur3=UNSET, amplitude=UNSET, fixed=OFF, 
+    distributionType=UNIFORM, fieldName='', localCsys=None)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=578.049, 
+    farPlane=1002.54, width=498.613, height=252.264, cameraPosition=(-246.376, 
+    -558.965, 127.195), cameraUpVector=(0.247337, 0.401109, 0.882007), 
+    cameraTarget=(156.5, 136.514, 5.17202), viewOffsetX=15.7171, 
+    viewOffsetY=-7.70882)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=572.527, 
+    farPlane=1019.4, width=493.85, height=249.854, cameraPosition=(693.544, 
+    -436.402, 222.44), cameraUpVector=(-0.322712, 0.488254, 0.810842), 
+    cameraTarget=(130.846, 108.409, 4.62712), viewOffsetX=15.567, 
+    viewOffsetY=-7.63518)
+mdb.save()
+#: The model database has been saved to "Y:\mb_16_v1.cae".
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=OFF, bcs=OFF, 
+    predefinedFields=OFF, connectors=OFF, adaptiveMeshConstraints=ON)
+mdb.models['Model-1'].StaticLinearPerturbationStep(name='linear_pertubation', 
+    previous='Initial')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    step='linear_pertubation')
+mdb.models['Model-1'].fieldOutputRequests['F-Output-2'].setValues(variables=(
+    'S', 'LE', 'U', 'RF', 'CF', 'SF'))
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=(
+    'CDISP', 'CF', 'CSTRESS', 'LE', 'PE', 'PEEQ', 'PEMAG', 'RF', 'S', 'U', 
+    'SF'))
+mdb.save()
+#: The model database has been saved to "Y:\mb_16_v1.cae".
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=ON, bcs=ON, 
+    predefinedFields=ON, connectors=ON, adaptiveMeshConstraints=OFF)
+a = mdb.models['Model-1'].rootAssembly
+s1 = a.instances['Part-1-1'].faces
+side1Faces1 = s1.getSequenceFromMask(mask=('[#1 ]', ), )
+region = a.Surface(side1Faces=side1Faces1, name='Surf-1')
+mdb.models['Model-1'].Pressure(name='pressure', 
+    createStepName='linear_pertubation', region=region, 
+    distributionType=UNIFORM, field='', magnitude=1.0)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='load')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    step='linear_pertubation')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='load')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    step='linear_pertubation')
+mdb.models['Model-1'].boundaryConditions['BC-2'].suppress()
+mdb.models['Model-1'].boundaryConditions['BC-2'].resume()
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='load')
+mdb.models['Model-1'].boundaryConditions['reduce_rotation'].move('load', 
+    'Initial')
+mdb.models['Model-1'].boundaryConditions['reduce_rotation'].move('Initial', 
+    'load')
+mdb.models['Model-1'].BoundaryCondition(name='simple_supports-Copy', 
+    objectToCopy=mdb.models['Model-1'].boundaryConditions['simple_supports'], 
+    toStepName='linear_pertubation')
+mdb.models['Model-1'].BoundaryCondition(name='reduce_rotation-Copy', 
+    objectToCopy=mdb.models['Model-1'].boundaryConditions['reduce_rotation'], 
+    toStepName='linear_pertubation')
+mdb.models['Model-1'].BoundaryCondition(name='BC-2-Copy', 
+    objectToCopy=mdb.models['Model-1'].boundaryConditions['BC-2'], 
+    toStepName='linear_pertubation')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    step='linear_pertubation')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON, loads=OFF, 
+    bcs=OFF, predefinedFields=OFF, connectors=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=OFF, 
+    engineeringFeatures=OFF, mesh=ON)
+session.viewports['Viewport: 1'].partDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+p = mdb.models['Model-1'].parts['Part-1']
+p.generateMesh()
+elemType1 = mesh.ElemType(elemCode=S4R5, elemLibrary=STANDARD, 
+    hourglassControl=DEFAULT)
+elemType2 = mesh.ElemType(elemCode=S3, elemLibrary=STANDARD)
+p = mdb.models['Model-1'].parts['Part-1']
+f = p.faces
+faces = f.getSequenceFromMask(mask=('[#1 ]', ), )
+pickedRegions =(faces, )
+p.setElementType(regions=pickedRegions, elemTypes=(elemType1, elemType2))
+elemType1 = mesh.ElemType(elemCode=S4R5, elemLibrary=STANDARD, 
+    hourglassControl=DEFAULT)
+elemType2 = mesh.ElemType(elemCode=S3, elemLibrary=STANDARD)
+p = mdb.models['Model-1'].parts['Part-1']
+f = p.faces
+faces = f.getSequenceFromMask(mask=('[#1 ]', ), )
+pickedRegions =(faces, )
+p.setElementType(regions=pickedRegions, elemTypes=(elemType1, elemType2))
+elemType1 = mesh.ElemType(elemCode=S4R5, elemLibrary=STANDARD, 
+    hourglassControl=DEFAULT)
+elemType2 = mesh.ElemType(elemCode=S3, elemLibrary=STANDARD)
+p = mdb.models['Model-1'].parts['Part-1']
+f = p.faces
+faces = f.getSequenceFromMask(mask=('[#1 ]', ), )
+pickedRegions =(faces, )
+p.setElementType(regions=pickedRegions, elemTypes=(elemType1, elemType2))
+p = mdb.models['Model-1'].parts['Part-1']
+p.generateMesh()
+a1 = mdb.models['Model-1'].rootAssembly
+a1.regenerate()
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+mdb.Job(name='mb_ss', model='Model-1', description='', type=ANALYSIS, 
+    atTime=None, waitMinutes=0, waitHours=0, queue=None, memory=90, 
+    memoryUnits=PERCENTAGE, getMemoryFromAnalysis=True, 
+    explicitPrecision=SINGLE, nodalOutputPrecision=SINGLE, echoPrint=OFF, 
+    modelPrint=OFF, contactPrint=OFF, historyPrint=OFF, userSubroutine='', 
+    scratch='', resultsFormat=ODB, numThreadsPerMpiProcess=1, 
+    multiprocessingMode=DEFAULT, numCpus=1, numGPUs=0)
+mdb.jobs['mb_ss'].submit(consistencyChecking=OFF)
+#: The job input file "mb_ss.inp" has been submitted for analysis.
+#: Job mb_ss: Analysis Input File Processor completed successfully.
+o3 = session.openOdb(name='Y:/mb_ss.odb')
+#: Model: Y:/mb_ss.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       3
+#: Number of Node Sets:          5
+#: Number of Steps:              2
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+#* rom_Transporter::GetClassBagForRead - Table for class "res_HistoryStep" is 
+#* missing from the database: Y:/mb_ss.odb. The database is corrupt.
+#: Job mb_ss: Abaqus/Standard completed successfully.
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+#* rom_Transporter::GetClassBagForRead - Table for class "res_HistoryStep" is 
+#* missing from the database: Y:/mb_ss.odb. The database is corrupt.
+#: Job mb_ss completed successfully. 
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].setValues(
+    displayedObject=session.odbs['Y:/mb_ss.odb'])
+o3 = session.openOdb(name='Y:/mb_ss.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].makeCurrent()
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=ON, bcs=ON, 
+    predefinedFields=ON, connectors=ON)
+mdb.models['Model-1'].loads['pressure'].setValues(magnitude=0.0005)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='Initial')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    step='linear_pertubation')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='Initial')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    step='linear_pertubation')
+mdb.models['Model-1'].boundaryConditions['BC-2-Copy'].move(
+    'linear_pertubation', 'Initial')
+#* Cannot move a boundary condition created in a perturbation step.
+mdb.models['Model-1'].boundaryConditions['BC-2'].move('load', 'Initial')
+mdb.models['Model-1'].boundaryConditions['reduce_rotation'].move('load', 
+    'Initial')
+mdb.models['Model-1'].boundaryConditions['simple_supports'].move('load', 
+    'Initial')
+del mdb.models['Model-1'].boundaryConditions['simple_supports-Copy']
+del mdb.models['Model-1'].boundaryConditions['reduce_rotation-Copy']
+del mdb.models['Model-1'].boundaryConditions['BC-2-Copy']
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='Initial')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    step='linear_pertubation')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='load')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    step='linear_pertubation')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=OFF, bcs=OFF, 
+    predefinedFields=OFF, connectors=OFF)
+mdb.Job(name='mb_ss_v2', model='Model-1', description='', type=ANALYSIS, 
+    atTime=None, waitMinutes=0, waitHours=0, queue=None, memory=90, 
+    memoryUnits=PERCENTAGE, getMemoryFromAnalysis=True, 
+    explicitPrecision=SINGLE, nodalOutputPrecision=SINGLE, echoPrint=OFF, 
+    modelPrint=OFF, contactPrint=OFF, historyPrint=OFF, userSubroutine='', 
+    scratch='', resultsFormat=ODB, numThreadsPerMpiProcess=1, 
+    multiprocessingMode=DEFAULT, numCpus=1, numGPUs=0)
+mdb.jobs['mb_ss_v2'].submit(consistencyChecking=OFF)
+#: The job input file "mb_ss_v2.inp" has been submitted for analysis.
+#: Job mb_ss_v2: Analysis Input File Processor completed successfully.
+#: Job mb_ss_v2: Abaqus/Standard completed successfully.
+session.viewports['Viewport: 1'].setValues(
+    displayedObject=session.odbs['Y:/mb_ss.odb'])
+o3 = session.openOdb(name='Y:/mb_ss_v2.odb')
+#: Model: Y:/mb_ss_v2.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       3
+#: Number of Node Sets:          5
+#: Number of Steps:              2
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].makeCurrent()
+#: Job mb_ss_v2 completed successfully. 
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SF', outputPosition=INTEGRATION_POINT, refinement=(
+    COMPONENT, 'SF1'), )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=951.156, 
+    farPlane=1392.68, width=694.316, height=293.532, viewOffsetX=-4.43983, 
+    viewOffsetY=-3.02764)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=1042.18, 
+    farPlane=1376.65, width=760.759, height=321.622, cameraPosition=(257.838, 
+    -876.64, 683.397), cameraUpVector=(-0.0281536, 0.807226, 0.58957), 
+    cameraTarget=(161.366, 79.0018, 27.8295), viewOffsetX=-4.8647, 
+    viewOffsetY=-3.31737)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=1034.05, 
+    farPlane=1387.93, width=754.822, height=319.112, cameraPosition=(479.317, 
+    -575.558, 936.302), cameraUpVector=(-0.25587, 0.908022, 0.331703), 
+    cameraTarget=(168.964, 92.5785, 36.5232), viewOffsetX=-4.82673, 
+    viewOffsetY=-3.29148)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.basicOptions.setValues(
+    averageElementOutput=False)
+mdb.save()
+#: The model database has been saved to "Y:\mb_16_v1.cae".
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(COMPONENT, 'U1'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(COMPONENT, 'U2'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(COMPONENT, 'U3'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(COMPONENT, 'U2'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(COMPONENT, 'U1'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(COMPONENT, 'U3'), )
+mdb.save()
+#: The model database has been saved to "Y:\mb_16_v1.cae".
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=ON, bcs=ON, 
+    predefinedFields=ON, connectors=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=OFF, bcs=OFF, 
+    predefinedFields=OFF, connectors=OFF, adaptiveMeshConstraints=ON)
+mdb.models['Model-1'].StaticLinearPerturbationStep(name='Step-3', 
+    previous='Initial')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='Step-3')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=ON, bcs=ON, 
+    predefinedFields=ON, connectors=ON, adaptiveMeshConstraints=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    step='linear_pertubation')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='Step-3')
+a = mdb.models['Model-1'].rootAssembly
+s1 = a.instances['Part-1-1'].faces
+side1Faces1 = s1.getSequenceFromMask(mask=('[#1 ]', ), )
+region = a.Surface(side1Faces=side1Faces1, name='Surf-2')
+mdb.models['Model-1'].Pressure(name='pressure_big', createStepName='Step-3', 
+    region=region, distributionType=UNIFORM, field='', magnitude=1.0)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON, loads=OFF, 
+    bcs=OFF, predefinedFields=OFF, connectors=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=OFF, 
+    optimizationTasks=ON, geometricRestrictions=ON, stopConditions=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    optimizationTasks=OFF, geometricRestrictions=OFF, stopConditions=OFF)
+mdb.Job(name='mb_ss_v3_nlg', model='Model-1', description='', type=ANALYSIS, 
+    atTime=None, waitMinutes=0, waitHours=0, queue=None, memory=90, 
+    memoryUnits=PERCENTAGE, getMemoryFromAnalysis=True, 
+    explicitPrecision=SINGLE, nodalOutputPrecision=SINGLE, echoPrint=OFF, 
+    modelPrint=OFF, contactPrint=OFF, historyPrint=OFF, userSubroutine='', 
+    scratch='', resultsFormat=ODB, numThreadsPerMpiProcess=1, 
+    multiprocessingMode=DEFAULT, numCpus=1, numGPUs=0)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    adaptiveMeshConstraints=ON)
+mdb.models['Model-1'].FieldOutputRequest(name='fo', createStepName='Step-3', 
+    variables=('S', 'U', 'RF', 'RT', 'RM', 'CF', 'SF'))
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    adaptiveMeshConstraints=OFF)
+del mdb.jobs['mb_ss_v3_nlg']
+mdb.Job(name='mb_ss_nlg', model='Model-1', description='', type=ANALYSIS, 
+    atTime=None, waitMinutes=0, waitHours=0, queue=None, memory=90, 
+    memoryUnits=PERCENTAGE, getMemoryFromAnalysis=True, 
+    explicitPrecision=SINGLE, nodalOutputPrecision=SINGLE, echoPrint=OFF, 
+    modelPrint=OFF, contactPrint=OFF, historyPrint=OFF, userSubroutine='', 
+    scratch='', resultsFormat=ODB, numThreadsPerMpiProcess=1, 
+    multiprocessingMode=DEFAULT, numCpus=1, numGPUs=0)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    adaptiveMeshConstraints=ON)
+mdb.models['Model-1'].HistoryOutputRequest(name='H-Output-2-Copy', 
+    objectToCopy=mdb.models['Model-1'].historyOutputRequests['H-Output-2'], 
+    toStepName='Step-3')
+del mdb.models['Model-1'].fieldOutputRequests['fo']
+mdb.models['Model-1'].FieldOutputRequest(name='F-Output-2-Copy', 
+    objectToCopy=mdb.models['Model-1'].fieldOutputRequests['F-Output-2'], 
+    toStepName='Step-3')
+mdb.save()
+#: The model database has been saved to "Y:\mb_16_v1.cae".
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    adaptiveMeshConstraints=OFF)
+mdb.jobs['mb_ss_v2'].submit(consistencyChecking=OFF)
+#: The job input file "mb_ss_v2.inp" has been submitted for analysis.
+#: Job mb_ss_v2: Analysis Input File Processor completed successfully.
+#: Job mb_ss_v2: Abaqus/Standard completed successfully.
+#: Job mb_ss_v2 completed successfully. 
+mdb.jobs['mb_ss_nlg'].submit(consistencyChecking=OFF)
+#: The job input file "mb_ss_nlg.inp" has been submitted for analysis.
+#: Job mb_ss_nlg: Analysis Input File Processor completed successfully.
+#: Job mb_ss_nlg: Abaqus/Standard completed successfully.
+#: Job mb_ss_nlg completed successfully. 
+o3 = session.openOdb(name='Y:/mb_ss_nlg.odb')
+#: Model: Y:/mb_ss_nlg.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       3
+#: Number of Node Sets:          5
+#: Number of Steps:              3
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+mdb.save()
+#: The model database has been saved to "Y:\mb_16_v1.cae".
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SM', outputPosition=INTEGRATION_POINT, refinement=(
+    COMPONENT, 'SM2'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SM', outputPosition=INTEGRATION_POINT, refinement=(
+    COMPONENT, 'SM1'), )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=1074.49, 
+    farPlane=1324.08, width=1068.74, height=451.824, cameraPosition=(207.595, 
+    -188.619, 1152.48), cameraUpVector=(-0.249273, 0.96336, -0.0990005), 
+    cameraTarget=(157.899, 84.8551, 23.2918))
+session.viewports['Viewport: 1'].odbDisplay.basicOptions.setValues(
+    averageElementOutput=True)
+session.viewports['Viewport: 1'].odbDisplay.basicOptions.setValues(
+    averageElementOutput=False)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=1019.96, 
+    farPlane=1374.74, width=1014.5, height=428.897, cameraPosition=(685.321, 
+    -29.4464, 1057.24), cameraUpVector=(-0.591517, 0.806212, 0.0113978), 
+    cameraTarget=(172.395, 89.685, 20.4019))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SM', outputPosition=INTEGRATION_POINT, refinement=(
+    COMPONENT, 'SM3'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=1091.33, 
+    farPlane=1300.67, width=1085.49, height=458.906, cameraPosition=(176.474, 
+    19.5518, 1184.61), cameraUpVector=(-0.336909, 0.901082, -0.273026), 
+    cameraTarget=(157.751, 91.0951, 24.0673))
+session.viewports['Viewport: 1'].partDisplay.setValues(mesh=OFF)
+session.viewports['Viewport: 1'].partDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=ON)
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+p = mdb.models['Model-1'].parts['Part-1']
+f = p.faces
+pickedRegions = f.getSequenceFromMask(mask=('[#1 ]', ), )
+p.deleteMesh(regions=pickedRegions)
+session.viewports['Viewport: 1'].partDisplay.setValues(mesh=ON)
+session.viewports['Viewport: 1'].partDisplay.meshOptions.setValues(seeds=ON)
+session.viewports['Viewport: 1'].partDisplay.setValues(mesh=OFF)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=608.927, 
+    farPlane=1079.7, width=589.474, height=240.41, viewOffsetX=-41.5838, 
+    viewOffsetY=5.31842)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=552.291, 
+    farPlane=888.447, width=534.649, height=218.05, cameraPosition=(341.258, 
+    -579.738, -151.795), cameraUpVector=(0.230999, 0.1716, 0.957702), 
+    cameraTarget=(278.03, 215.661, 3.89242), viewOffsetX=-37.7161, 
+    viewOffsetY=4.82376)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=536.51, 
+    farPlane=873.208, width=519.372, height=211.82, cameraPosition=(209.98, 
+    -593.538, -115.525), cameraUpVector=(0.240561, 0.174559, 0.954809), 
+    cameraTarget=(295.916, 206.512, 0.370243), viewOffsetX=-36.6384, 
+    viewOffsetY=4.68593)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=461.697, 
+    farPlane=885.314, width=446.949, height=182.283, cameraPosition=(-52.7186, 
+    -529.314, -119.537), cameraUpVector=(0.203045, 0.0998455, 0.974065), 
+    cameraTarget=(332.365, 175.534, 6.14334), viewOffsetX=-31.5294, 
+    viewOffsetY=4.03251)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=456.389, 
+    farPlane=803.455, width=441.811, height=180.187, cameraPosition=(-47.2515, 
+    549.588, -397.376), cameraUpVector=(0.134765, 0.359146, 0.9235), 
+    cameraTarget=(230.431, -42.348, 85.7377), viewOffsetX=-31.1669, 
+    viewOffsetY=3.98615)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=456.791, 
+    farPlane=803.052, width=442.2, height=180.346, cameraPosition=(-47.2164, 
+    555.489, -390.166), cameraUpVector=(0.323497, 0.395527, 0.859598), 
+    cameraTarget=(230.466, -36.447, 92.9477), viewOffsetX=-31.1944, 
+    viewOffsetY=3.98966)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=601.769, 
+    farPlane=724.114, width=582.547, height=237.585, cameraPosition=(119.713, 
+    57.8687, -652.228), cameraUpVector=(0.0350529, 0.963032, 0.267095), 
+    cameraTarget=(178.79, 112.747, 156.718), viewOffsetX=-41.095, 
+    viewOffsetY=5.25591)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=590.776, 
+    farPlane=735.108, width=571.906, height=233.245, cameraPosition=(209.314, 
+    52.5741, -658.413), cameraUpVector=(-0.299154, -0.859176, 0.415119), 
+    cameraTarget=(268.391, 107.452, 150.534), viewOffsetX=-40.3443, 
+    viewOffsetY=5.1599)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=591.611, 
+    farPlane=734.275, width=572.714, height=233.574, cameraPosition=(119.782, 
+    57.3065, -652.196), cameraUpVector=(0.0233641, 0.963152, 0.267941), 
+    cameraTarget=(178.859, 112.184, 156.751), viewOffsetX=-40.4013, 
+    viewOffsetY=5.16719)
+p = mdb.models['Model-1'].parts['Part-1']
+f, e, d1 = p.faces, p.edges, p.datums
+t = p.MakeSketchTransform(sketchPlane=f[0], sketchUpEdge=e[14], 
+    sketchPlaneSide=SIDE1, origin=(156.3, 110.6, 7.75))
+s = mdb.models['Model-1'].ConstrainedSketch(name='__profile__', 
+    sheetSize=766.05, gridSpacing=19.15, transform=t)
+g, v, d, c = s.geometry, s.vertices, s.dimensions, s.constraints
+s.setPrimaryObject(option=SUPERIMPOSE)
+p = mdb.models['Model-1'].parts['Part-1']
+p.projectReferencesOntoSketch(sketch=s, filter=COPLANAR_EDGES)
+s.rectangle(point1=(-156.3, 0.0), point2=(156.3, 38.3))
+s.CoincidentConstraint(entity1=v[4], entity2=g[2], addUndoState=False)
+s.EqualDistanceConstraint(entity1=v[0], entity2=v[1], midpoint=v[4], 
+    addUndoState=False)
+s.CoincidentConstraint(entity1=v[6], entity2=g[4], addUndoState=False)
+s.undo()
+s.rectangle(point1=(-57.45, -57.45), point2=(57.45, 57.45))
+p = mdb.models['Model-1'].parts['Part-1']
+f = p.faces
+pickedFaces = f.getSequenceFromMask(mask=('[#1 ]', ), )
+e1, d2 = p.edges, p.datums
+p.PartitionFaceBySketch(sketchUpEdge=e1[14], faces=pickedFaces, sketch=s)
+s.unsetPrimaryObject()
+del mdb.models['Model-1'].sketches['__profile__']
+a1 = mdb.models['Model-1'].rootAssembly
+a1.regenerate()
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=ON, bcs=ON, 
+    predefinedFields=ON, connectors=ON)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=563.565, 
+    farPlane=1028.36, width=603.042, height=245.943, cameraPosition=(698.965, 
+    -427.499, 230.705), cameraUpVector=(0.0489352, 0.791494, 0.609215), 
+    cameraTarget=(136.267, 117.312, 12.8925), viewOffsetX=15.3233, 
+    viewOffsetY=-7.51567)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=660.169, 
+    farPlane=915.036, width=706.413, height=288.102, cameraPosition=(199.971, 
+    -326.347, 661.849), cameraUpVector=(-0.0944993, 0.963098, 0.252016), 
+    cameraTarget=(135.486, 124.843, -11.322), viewOffsetX=17.95, 
+    viewOffsetY=-8.80398)
+a = mdb.models['Model-1'].rootAssembly
+s1 = a.instances['Part-1-1'].faces
+side1Faces1 = s1.getSequenceFromMask(mask=('[#2 ]', ), )
+region = a.Surface(side1Faces=side1Faces1, name='Surf-3')
+mdb.models['Model-1'].Pressure(name='Load-3', createStepName='Step-3', 
+    region=region, distributionType=UNIFORM, field='', magnitude=2.0)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=652.751, 
+    farPlane=922.455, width=698.476, height=284.865, viewOffsetX=32.5529, 
+    viewOffsetY=-50.7831)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=652.694, 
+    farPlane=922.512, width=698.415, height=284.84, viewOffsetX=40.5211, 
+    viewOffsetY=-14.6617)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=619.038, 
+    farPlane=972.122, width=662.401, height=270.152, cameraPosition=(270.195, 
+    -549.213, 437.879), cameraUpVector=(-0.10596, 0.780562, 0.616032), 
+    cameraTarget=(134.067, 123.418, 2.07373), viewOffsetX=38.4316, 
+    viewOffsetY=-13.9057)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    step='linear_pertubation')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='load')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='Initial')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='Step-3')
+del mdb.models['Model-1'].loads['pressure_big']
+session.viewports['Viewport: 1'].view.setValues(nearPlane=624.745, 
+    farPlane=966.415, width=590.693, height=240.907, viewOffsetX=26.4412, 
+    viewOffsetY=-19.6109)
+o3 = session.openOdb(name='Y:/mb_ss.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].makeCurrent()
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].setValues(
+    displayedObject=session.odbs['Y:/mb_ss.odb'])
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=OFF, bcs=OFF, 
+    predefinedFields=OFF, connectors=OFF)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+o3 = session.openOdb(name='Y:/mb_ss_nlg.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SM', outputPosition=INTEGRATION_POINT, refinement=(
+    COMPONENT, 'SM2'), )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SM', outputPosition=INTEGRATION_POINT, refinement=(
+    COMPONENT, 'SM1'), )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+odb = session.mdbData['Model-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=odb)
+odb = session.odbs['Y:/mb_ss_nlg.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=odb)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SM', outputPosition=INTEGRATION_POINT, refinement=(
+    COMPONENT, 'SM2'), )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=ON, bcs=ON, 
+    predefinedFields=ON, connectors=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON, loads=OFF, 
+    bcs=OFF, predefinedFields=OFF, connectors=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+session.viewports['Viewport: 1'].partDisplay.setValues(mesh=ON)
+session.viewports['Viewport: 1'].partDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=OFF)
+elemType1 = mesh.ElemType(elemCode=S4R5, elemLibrary=STANDARD, 
+    hourglassControl=DEFAULT)
+elemType2 = mesh.ElemType(elemCode=S3, elemLibrary=STANDARD)
+p = mdb.models['Model-1'].parts['Part-1']
+f = p.faces
+faces = f.getSequenceFromMask(mask=('[#3 ]', ), )
+pickedRegions =(faces, )
+p.setElementType(regions=pickedRegions, elemTypes=(elemType1, elemType2))
+p = mdb.models['Model-1'].parts['Part-1']
+p.generateMesh()
+session.viewports['Viewport: 1'].view.setValues(nearPlane=588.593, 
+    farPlane=737.293, width=569.793, height=232.889, viewOffsetX=-40.1952, 
+    viewOffsetY=5.14083)
+a1 = mdb.models['Model-1'].rootAssembly
+a1.regenerate()
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=OFF, loads=ON, 
+    bcs=ON, predefinedFields=ON, connectors=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=OFF, bcs=OFF, 
+    predefinedFields=OFF, connectors=OFF)
+mdb.Job(name='mb_ss_partition', model='Model-1', description='', type=ANALYSIS, 
+    atTime=None, waitMinutes=0, waitHours=0, queue=None, memory=90, 
+    memoryUnits=PERCENTAGE, getMemoryFromAnalysis=True, 
+    explicitPrecision=SINGLE, nodalOutputPrecision=SINGLE, echoPrint=OFF, 
+    modelPrint=OFF, contactPrint=OFF, historyPrint=OFF, userSubroutine='', 
+    scratch='', resultsFormat=ODB, numThreadsPerMpiProcess=1, 
+    multiprocessingMode=DEFAULT, numCpus=1, numGPUs=0)
+mdb.jobs['mb_ss_partition'].submit(consistencyChecking=OFF)
+#: The job input file "mb_ss_partition.inp" has been submitted for analysis.
+#: Job mb_ss_partition: Analysis Input File Processor completed successfully.
+#: Job mb_ss_partition: Abaqus/Standard completed successfully.
+#: Job mb_ss_partition completed successfully. 
+session.viewports['Viewport: 1'].setValues(
+    displayedObject=session.odbs['Y:/mb_ss_nlg.odb'])
+o3 = session.openOdb(name='Y:/mb_ss_partition.odb')
+#: Model: Y:/mb_ss_partition.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       3
+#: Number of Node Sets:          5
+#: Number of Steps:              3
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(COMPONENT, 'U1'), )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='S', outputPosition=INTEGRATION_POINT, refinement=(INVARIANT, 
+    'Mises'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SM', outputPosition=INTEGRATION_POINT, refinement=(
+    COMPONENT, 'SM2'), )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.basicOptions.setValues(
+    averageElementOutput=True)
+session.viewports['Viewport: 1'].odbDisplay.basicOptions.setValues(
+    averageElementOutput=False)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=968.079, 
+    farPlane=1375.76, width=551.732, height=233.253, viewOffsetX=11.0414, 
+    viewOffsetY=12.0248)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RM', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SF', outputPosition=INTEGRATION_POINT, refinement=(
+    COMPONENT, 'SF1'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SM', outputPosition=INTEGRATION_POINT, refinement=(
+    COMPONENT, 'SM2'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='UR', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SM', outputPosition=INTEGRATION_POINT, refinement=(
+    COMPONENT, 'SM2'), )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    UNDEFORMED, ))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(COMPONENT, 'U1'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(COMPONENT, 'U2'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(COMPONENT, 'U3'), )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=2, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+mdb.save()
+#: The model database has been saved to "Y:\mb_16_v1.cae".

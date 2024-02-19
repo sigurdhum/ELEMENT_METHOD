@@ -1,0 +1,775 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=200.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(38.75, 21.25))
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=350.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(90.0, 50.0))
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=350.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(312.6, 0.0))
+#* Rectangle cannot be created.
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(312.6, 221.2))
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='Part-1', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Part-1'].BaseSolidExtrude(depth=15.5, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='alu')
+mdb.models['Model-1'].materials['alu'].Elastic(table=((72000.0, 0.333), ))
+mdb.models['Model-1'].HomogeneousSolidSection(material='alu', name='section', 
+    thickness=None)
+mdb.models['Model-1'].parts['Part-1'].Set(cells=
+    mdb.models['Model-1'].parts['Part-1'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), name='Set-1')
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-1'].sets['Set-1'], sectionName='section', 
+    thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['Part-1'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=10.0)
+mdb.models['Model-1'].parts['Part-1'].generateMesh()
+# Save by 10992702 on 2024_02_15-14.26.01; build 2023 2022_09_28-20.11.55 183150
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Part-1-1', 
+    part=mdb.models['Model-1'].parts['Part-1'])
+mdb.models['Model-1'].StaticStep(name='load', previous='Initial')
+# Save by 10992702 on 2024_02_15-14.27.56; build 2023 2022_09_28-20.11.55 183150
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].parts['Part-1'].AssignMidsurfaceRegion(cellList=
+    mdb.models['Model-1'].parts['Part-1'].cells.getSequenceFromMask(mask=(
+    '[#1 ]', ), ))
+mdb.models['Model-1'].parts['Part-1'].OffsetFaces(faceList=
+    mdb.models['Model-1'].parts['Part-1'].faces.getSequenceFromMask(mask=(
+    '[#2 ]', ), ), targetFaces=
+    mdb.models['Model-1'].parts['Part-1'].faces.getSequenceFromMask(mask=(
+    '[#8 ]', ), ), targetFacesMethod=HALF_OF_AVERAGE, trimToReferenceRep=False)
+mdb.models['Model-1'].HomogeneousShellSection(idealization=NO_IDEALIZATION, 
+    integrationRule=SIMPSON, material='alu', name='shell_5mm', 
+    nodalThicknessField='', numIntPts=5, poissonDefinition=DEFAULT, 
+    preIntegrate=OFF, temperature=GRADIENT, thickness=5.0, thicknessField='', 
+    thicknessModulus=None, thicknessType=UNIFORM, useDensity=OFF)
+mdb.models['Model-1'].parts['Part-1'].Set(faces=
+    mdb.models['Model-1'].parts['Part-1'].faces.getSequenceFromMask(('[#1 ]', 
+    ), ), name='Set-2')
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-1'].sets['Set-2'], sectionName=
+    'shell_5mm', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['Part-1'].flipNormal(regions=Region(
+    faces=mdb.models['Model-1'].parts['Part-1'].faces.getSequenceFromMask(
+    mask=('[#1 ]', ), )))
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].edges.getSequenceFromMask(
+    ('[#5 ]', ), ), name='Set-1')
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='load', 
+    distributionType=UNIFORM, fieldName='', fixed=OFF, localCsys=None, name=
+    'simple_supports', region=mdb.models['Model-1'].rootAssembly.sets['Set-1'], 
+    u1=UNSET, u2=UNSET, u3=0.0, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['Model-1'].rootAssembly.Set(name='Set-2', vertices=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].vertices.getSequenceFromMask(
+    ('[#4 ]', ), ))
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='load', 
+    distributionType=UNIFORM, fieldName='', fixed=OFF, localCsys=None, name=
+    'BC-2', region=mdb.models['Model-1'].rootAssembly.sets['Set-2'], u1=0.0, 
+    u2=0.0, u3=UNSET, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['Model-1'].rootAssembly.Set(name='Set-3', vertices=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].vertices.getSequenceFromMask(
+    ('[#2 ]', ), ))
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='load', 
+    distributionType=UNIFORM, fieldName='', fixed=OFF, localCsys=None, name=
+    'reduce_rotation', region=mdb.models['Model-1'].rootAssembly.sets['Set-3'], 
+    u1=0.0, u2=UNSET, u3=UNSET, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+# Save by 10992702 on 2024_02_15-15.26.42; build 2023 2022_09_28-20.11.55 183150
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].StaticLinearPerturbationStep(name='linear_pertubation', 
+    previous='Initial')
+mdb.models['Model-1'].fieldOutputRequests['F-Output-2'].setValues(variables=(
+    'S', 'LE', 'U', 'RF', 'CF', 'SF'))
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=(
+    'CDISP', 'CF', 'CSTRESS', 'LE', 'PE', 'PEEQ', 'PEMAG', 'RF', 'S', 'U', 
+    'SF'))
+# Save by 10992702 on 2024_02_15-15.30.36; build 2023 2022_09_28-20.11.55 183150
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].rootAssembly.Surface(name='Surf-1', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#1 ]', ), ))
+mdb.models['Model-1'].Pressure(createStepName='linear_pertubation', 
+    distributionType=UNIFORM, field='', magnitude=1.0, name='pressure', region=
+    mdb.models['Model-1'].rootAssembly.surfaces['Surf-1'])
+mdb.models['Model-1'].boundaryConditions['BC-2'].suppress()
+mdb.models['Model-1'].boundaryConditions['BC-2'].resume()
+mdb.models['Model-1'].boundaryConditions['reduce_rotation'].move('load', 
+    'Initial')
+mdb.models['Model-1'].boundaryConditions['reduce_rotation'].move('Initial', 
+    'load')
+mdb.models['Model-1'].BoundaryCondition(name='simple_supports-Copy', 
+    objectToCopy=mdb.models['Model-1'].boundaryConditions['simple_supports'], 
+    toStepName='linear_pertubation')
+mdb.models['Model-1'].BoundaryCondition(name='reduce_rotation-Copy', 
+    objectToCopy=mdb.models['Model-1'].boundaryConditions['reduce_rotation'], 
+    toStepName='linear_pertubation')
+mdb.models['Model-1'].BoundaryCondition(name='BC-2-Copy', objectToCopy=
+    mdb.models['Model-1'].boundaryConditions['BC-2'], toStepName=
+    'linear_pertubation')
+mdb.models['Model-1'].parts['Part-1'].generateMesh()
+mdb.models['Model-1'].parts['Part-1'].setElementType(elemTypes=(ElemType(
+    elemCode=S4R5, elemLibrary=STANDARD, hourglassControl=DEFAULT), ElemType(
+    elemCode=S3, elemLibrary=STANDARD)), regions=(
+    mdb.models['Model-1'].parts['Part-1'].faces.getSequenceFromMask(('[#1 ]', 
+    ), ), ))
+mdb.models['Model-1'].parts['Part-1'].setElementType(elemTypes=(ElemType(
+    elemCode=S4R5, elemLibrary=STANDARD, hourglassControl=DEFAULT), ElemType(
+    elemCode=S3, elemLibrary=STANDARD)), regions=(
+    mdb.models['Model-1'].parts['Part-1'].faces.getSequenceFromMask(('[#1 ]', 
+    ), ), ))
+mdb.models['Model-1'].parts['Part-1'].setElementType(elemTypes=(ElemType(
+    elemCode=S4R5, elemLibrary=STANDARD, hourglassControl=DEFAULT), ElemType(
+    elemCode=S3, elemLibrary=STANDARD)), regions=(
+    mdb.models['Model-1'].parts['Part-1'].faces.getSequenceFromMask(('[#1 ]', 
+    ), ), ))
+mdb.models['Model-1'].parts['Part-1'].generateMesh()
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='mb_ss', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, numThreadsPerMpiProcess=1, queue=None, resultsFormat=
+    ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=0, 
+    waitMinutes=0)
+mdb.jobs['mb_ss'].submit(consistencyChecking=OFF)
+mdb.jobs['mb_ss']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'vwhresxaas52', 'handle': 0, 'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'Y:\\mb_ss.odb', 'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'vwhresxaas52', 'handle': 6212, 'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'mb_ss', 'memory': 30.0})
+mdb.jobs['mb_ss']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16384.0, 'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(MINIMUM_MEMORY, {'minimum_memory': 18.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'Solver problem. Numerical singularity when processing node PART-1-1.368 D.O.F. 2 ratio = 18.5813E+12 .', 
+    'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(STATUS, {'totalTime': 0.0, 'attempts': 1, 
+    'timeIncrement': 2.22e-16, 'increment': 1, 'stepTime': 2.22e-16, 'step': 1, 
+    'jobName': 'mb_ss', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['mb_ss']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 0, 'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'mb_ss', 'memory': 30.0})
+mdb.jobs['mb_ss']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16384.0, 'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(MINIMUM_MEMORY, {'minimum_memory': 18.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'Solver problem. Numerical singularity when processing node PART-1-1.368 D.O.F. 2 ratio = 18.5813E+12 .', 
+    'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 1, 'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 2, 
+    'jobName': 'mb_ss', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['mb_ss']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'mb_ss'})
+mdb.jobs['mb_ss']._Message(JOB_COMPLETED, {'time': 'Thu Feb 15 15:45:42 2024', 
+    'jobName': 'mb_ss'})
+mdb.models['Model-1'].loads['pressure'].setValues(magnitude=0.0005)
+mdb.models['Model-1'].boundaryConditions['BC-2-Copy'].move('linear_pertubation'
+    , 'Initial')
+#* Cannot move a boundary condition created in a perturbation step.
+mdb.models['Model-1'].boundaryConditions['BC-2'].move('load', 'Initial')
+mdb.models['Model-1'].boundaryConditions['reduce_rotation'].move('load', 
+    'Initial')
+mdb.models['Model-1'].boundaryConditions['simple_supports'].move('load', 
+    'Initial')
+del mdb.models['Model-1'].boundaryConditions['simple_supports-Copy']
+del mdb.models['Model-1'].boundaryConditions['reduce_rotation-Copy']
+del mdb.models['Model-1'].boundaryConditions['BC-2-Copy']
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='mb_ss_v2', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, numThreadsPerMpiProcess=1, queue=None, resultsFormat=
+    ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=0, 
+    waitMinutes=0)
+mdb.jobs['mb_ss_v2'].submit(consistencyChecking=OFF)
+mdb.jobs['mb_ss_v2']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'vwhresxaas52', 'handle': 0, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'Y:\\mb_ss_v2.odb', 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'vwhresxaas52', 'handle': 7440, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'mb_ss_v2', 'memory': 30.0})
+mdb.jobs['mb_ss_v2']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16384.0, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(MINIMUM_MEMORY, {'minimum_memory': 18.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'Solver problem. Numerical singularity when processing node PART-1-1.368 D.O.F. 2 ratio = 18.5813E+12 .', 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(STATUS, {'totalTime': 0.0, 'attempts': 1, 
+    'timeIncrement': 2.22e-16, 'increment': 1, 'stepTime': 2.22e-16, 'step': 1, 
+    'jobName': 'mb_ss_v2', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['mb_ss_v2']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 0, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'mb_ss_v2', 'memory': 30.0})
+mdb.jobs['mb_ss_v2']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16384.0, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(MINIMUM_MEMORY, {'minimum_memory': 18.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'Solver problem. Numerical singularity when processing node PART-1-1.368 D.O.F. 2 ratio = 18.5813E+12 .', 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 1, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 2, 
+    'jobName': 'mb_ss_v2', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['mb_ss_v2']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(JOB_COMPLETED, {
+    'time': 'Thu Feb 15 15:48:44 2024', 'jobName': 'mb_ss_v2'})
+# Save by 10992702 on 2024_02_15-16.05.16; build 2023 2022_09_28-20.11.55 183150
+# Save by 10992702 on 2024_02_15-16.15.02; build 2023 2022_09_28-20.11.55 183150
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].StaticLinearPerturbationStep(name='Step-3', previous=
+    'Initial')
+mdb.models['Model-1'].rootAssembly.Surface(name='Surf-2', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#1 ]', ), ))
+mdb.models['Model-1'].Pressure(createStepName='Step-3', distributionType=
+    UNIFORM, field='', magnitude=1.0, name='pressure_big', region=
+    mdb.models['Model-1'].rootAssembly.surfaces['Surf-2'])
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='mb_ss_v3_nlg', nodalOutputPrecision=
+    SINGLE, numCpus=1, numGPUs=0, numThreadsPerMpiProcess=1, queue=None, 
+    resultsFormat=ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=
+    0, waitMinutes=0)
+mdb.models['Model-1'].FieldOutputRequest(createStepName='Step-3', name='fo', 
+    variables=('S', 'U', 'RF', 'RT', 'RM', 'CF', 'SF'))
+del mdb.jobs['mb_ss_v3_nlg']
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='mb_ss_nlg', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, numThreadsPerMpiProcess=1, queue=None, resultsFormat=
+    ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=0, 
+    waitMinutes=0)
+mdb.models['Model-1'].HistoryOutputRequest(name='H-Output-2-Copy', 
+    objectToCopy=mdb.models['Model-1'].historyOutputRequests['H-Output-2'], 
+    toStepName='Step-3')
+del mdb.models['Model-1'].fieldOutputRequests['fo']
+mdb.models['Model-1'].FieldOutputRequest(name='F-Output-2-Copy', objectToCopy=
+    mdb.models['Model-1'].fieldOutputRequests['F-Output-2'], toStepName=
+    'Step-3')
+# Save by 10992702 on 2024_02_15-16.26.27; build 2023 2022_09_28-20.11.55 183150
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['mb_ss_v2'].submit(consistencyChecking=OFF)
+mdb.jobs['mb_ss_v2']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'vwhresxaas52', 'handle': 0, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'Y:\\mb_ss_v2.odb', 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'vwhresxaas52', 'handle': 10004, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'mb_ss_v2', 'memory': 30.0})
+mdb.jobs['mb_ss_v2']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16384.0, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(MINIMUM_MEMORY, {'minimum_memory': 18.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'Solver problem. Numerical singularity when processing node PART-1-1.368 D.O.F. 2 ratio = 18.5813E+12 .', 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(STATUS, {'totalTime': 0.0, 'attempts': 1, 
+    'timeIncrement': 2.22e-16, 'increment': 1, 'stepTime': 2.22e-16, 'step': 1, 
+    'jobName': 'mb_ss_v2', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['mb_ss_v2']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 0, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'mb_ss_v2', 'memory': 27.0})
+mdb.jobs['mb_ss_v2']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16384.0, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(MINIMUM_MEMORY, {'minimum_memory': 16.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 1, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(STATUS, {'totalTime': 0.0, 'attempts': 1, 
+    'timeIncrement': 2.22e-16, 'increment': 1, 'stepTime': 2.22e-16, 'step': 2, 
+    'jobName': 'mb_ss_v2', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['mb_ss_v2']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 
+    'frame': 0, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'mb_ss_v2', 'memory': 30.0})
+mdb.jobs['mb_ss_v2']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16384.0, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(MINIMUM_MEMORY, {'minimum_memory': 18.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'Solver problem. Numerical singularity when processing node PART-1-1.368 D.O.F. 2 ratio = 18.5813E+12 .', 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 
+    'frame': 1, 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 3, 
+    'jobName': 'mb_ss_v2', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['mb_ss_v2']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_v2']._Message(JOB_COMPLETED, {
+    'time': 'Thu Feb 15 16:27:00 2024', 'jobName': 'mb_ss_v2'})
+mdb.jobs['mb_ss_nlg'].submit(consistencyChecking=OFF)
+mdb.jobs['mb_ss_nlg']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'vwhresxaas52', 'handle': 0, 'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'Y:\\mb_ss_nlg.odb', 'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'vwhresxaas52', 'handle': 7836, 'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'mb_ss_nlg', 'memory': 30.0})
+mdb.jobs['mb_ss_nlg']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16384.0, 'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(MINIMUM_MEMORY, {'minimum_memory': 18.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'Solver problem. Numerical singularity when processing node PART-1-1.368 D.O.F. 2 ratio = 18.5813E+12 .', 
+    'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(STATUS, {'totalTime': 0.0, 'attempts': 1, 
+    'timeIncrement': 2.22e-16, 'increment': 1, 'stepTime': 2.22e-16, 'step': 1, 
+    'jobName': 'mb_ss_nlg', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['mb_ss_nlg']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 0, 'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'mb_ss_nlg', 'memory': 27.0})
+mdb.jobs['mb_ss_nlg']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16384.0, 'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(MINIMUM_MEMORY, {'minimum_memory': 16.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 1, 'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(STATUS, {'totalTime': 0.0, 'attempts': 1, 
+    'timeIncrement': 2.22e-16, 'increment': 1, 'stepTime': 2.22e-16, 'step': 2, 
+    'jobName': 'mb_ss_nlg', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['mb_ss_nlg']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 
+    'frame': 0, 'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'mb_ss_nlg', 'memory': 30.0})
+mdb.jobs['mb_ss_nlg']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16384.0, 'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(MINIMUM_MEMORY, {'minimum_memory': 18.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'Solver problem. Numerical singularity when processing node PART-1-1.368 D.O.F. 2 ratio = 18.5813E+12 .', 
+    'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 
+    'frame': 1, 'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 3, 
+    'jobName': 'mb_ss_nlg', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['mb_ss_nlg']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'mb_ss_nlg'})
+mdb.jobs['mb_ss_nlg']._Message(JOB_COMPLETED, {
+    'time': 'Thu Feb 15 16:27:22 2024', 'jobName': 'mb_ss_nlg'})
+# Save by 10992702 on 2024_02_15-16.29.01; build 2023 2022_09_28-20.11.55 183150
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].parts['Part-1'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Part-1'].faces.getSequenceFromMask(('[#1 ]', 
+    ), ))
+mdb.models['Model-1'].ConstrainedSketch(gridSpacing=19.15, name='__profile__', 
+    sheetSize=766.05, transform=
+    mdb.models['Model-1'].parts['Part-1'].MakeSketchTransform(
+    sketchPlane=mdb.models['Model-1'].parts['Part-1'].faces[0], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['Model-1'].parts['Part-1'].edges[14], 
+    sketchOrientation=RIGHT, origin=(156.3, 110.6, 7.75)))
+mdb.models['Model-1'].parts['Part-1'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__profile__'])
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(-156.3, 0.0), 
+    point2=(156.3, 38.3))
+mdb.models['Model-1'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[4], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].EqualDistanceConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[0], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[1], midpoint=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[4])
+mdb.models['Model-1'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[6], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4])
+mdb.models['Model-1'].sketches['__profile__'].undo()
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(-57.45, -57.45)
+    , point2=(57.45, 57.45))
+mdb.models['Model-1'].parts['Part-1'].PartitionFaceBySketch(faces=
+    mdb.models['Model-1'].parts['Part-1'].faces.getSequenceFromMask(('[#1 ]', 
+    ), ), sketch=mdb.models['Model-1'].sketches['__profile__'], sketchUpEdge=
+    mdb.models['Model-1'].parts['Part-1'].edges[14])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].rootAssembly.Surface(name='Surf-3', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#2 ]', ), ))
+mdb.models['Model-1'].Pressure(createStepName='Step-3', distributionType=
+    UNIFORM, field='', magnitude=2.0, name='Load-3', region=
+    mdb.models['Model-1'].rootAssembly.surfaces['Surf-3'])
+del mdb.models['Model-1'].loads['pressure_big']
+mdb.models['Model-1'].parts['Part-1'].setElementType(elemTypes=(ElemType(
+    elemCode=S4R5, elemLibrary=STANDARD, hourglassControl=DEFAULT), ElemType(
+    elemCode=S3, elemLibrary=STANDARD)), regions=(
+    mdb.models['Model-1'].parts['Part-1'].faces.getSequenceFromMask(('[#3 ]', 
+    ), ), ))
+mdb.models['Model-1'].parts['Part-1'].generateMesh()
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='mb_ss_partition', nodalOutputPrecision=
+    SINGLE, numCpus=1, numGPUs=0, numThreadsPerMpiProcess=1, queue=None, 
+    resultsFormat=ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=
+    0, waitMinutes=0)
+mdb.jobs['mb_ss_partition'].submit(consistencyChecking=OFF)
+mdb.jobs['mb_ss_partition']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'vwhresxaas52', 'handle': 0, 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'Y:\\mb_ss_partition.odb', 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'vwhresxaas52', 'handle': 7184, 
+    'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'mb_ss_partition', 'memory': 30.0})
+mdb.jobs['mb_ss_partition']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16384.0, 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(MINIMUM_MEMORY, {'minimum_memory': 19.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'Solver problem. Numerical singularity when processing node PART-1-1.484 D.O.F. 2 ratio = 120.441E+12  .', 
+    'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(STATUS, {'totalTime': 0.0, 'attempts': 1, 
+    'timeIncrement': 2.22e-16, 'increment': 1, 'stepTime': 2.22e-16, 'step': 1, 
+    'jobName': 'mb_ss_partition', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['mb_ss_partition']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 2, 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 1, 'frame': 0, 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'mb_ss_partition', 'memory': 27.0})
+mdb.jobs['mb_ss_partition']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16384.0, 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(MINIMUM_MEMORY, {'minimum_memory': 16.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 1, 'frame': 1, 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(STATUS, {'totalTime': 0.0, 'attempts': 1, 
+    'timeIncrement': 2.22e-16, 'increment': 1, 'stepTime': 2.22e-16, 'step': 2, 
+    'jobName': 'mb_ss_partition', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['mb_ss_partition']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 2, 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 3, 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 2, 'frame': 0, 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'mb_ss_partition', 'memory': 30.0})
+mdb.jobs['mb_ss_partition']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16384.0, 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(MINIMUM_MEMORY, {'minimum_memory': 18.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'Solver problem. Numerical singularity when processing node PART-1-1.484 D.O.F. 2 ratio = 120.441E+12  .', 
+    'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 2, 'frame': 1, 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 3, 
+    'jobName': 'mb_ss_partition', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['mb_ss_partition']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 3, 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'mb_ss_partition'})
+mdb.jobs['mb_ss_partition']._Message(JOB_COMPLETED, {
+    'time': 'Thu Feb 15 17:37:12 2024', 'jobName': 'mb_ss_partition'})
+# Save by 10992702 on 2024_02_15-17.40.09; build 2023 2022_09_28-20.11.55 183150
+# Save by 10992702 on 2024_02_15-17.44.27; build 2023 2022_09_28-20.11.55 183150

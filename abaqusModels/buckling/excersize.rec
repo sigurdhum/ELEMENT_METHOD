@@ -1,0 +1,55 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['lp_fine'].submit(consistencyChecking=OFF)
+mdb.jobs['lp_fine']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'jobName': 'lp_fine', 'clientHost': 'vwhresxaas04', 'handle': 0})
+mdb.jobs['lp_fine']._Message(ODB_FILE, {'file': 'Y:\\lp_fine.odb', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(COMPLETED, {'message': 'Analysis phase complete', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'jobName': 'lp_fine', 'clientHost': 'vwhresxaas04', 'handle': 1032})
+mdb.jobs['lp_fine']._Message(STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(ODB_FRAME, {'step': 0, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(MEMORY_ESTIMATE, {'memory': 617.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(MINIMUM_MEMORY, {'minimum_memory': 105.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(MEMORY_ESTIMATE, {'memory': 638.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(MINIMUM_MEMORY, {'minimum_memory': 105.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(ODB_FRAME, {'step': 0, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(ODB_FRAME, {'step': 0, 'frame': 2, 
+    'phase': STANDARD_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(ODB_FRAME, {'step': 0, 'frame': 3, 
+    'phase': STANDARD_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(STATUS, {'step': 1, 'increment': 1, 'attempts': 1, 
+    'severe': 0, 'equilibrium': 0, 'iterations': 0, 'totalTime': 0.0, 
+    'stepTime': 1e-36, 'timeIncrement': 1e-36, 'phase': STANDARD_PHASE, 
+    'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(END_STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(COMPLETED, {'message': 'Analysis phase complete', 
+    'phase': STANDARD_PHASE, 'jobName': 'lp_fine'})
+mdb.jobs['lp_fine']._Message(JOB_COMPLETED, {
+    'time': 'Sat Feb 17 16:45:18 2024', 'jobName': 'lp_fine'})
