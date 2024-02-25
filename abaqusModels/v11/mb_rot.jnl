@@ -1,0 +1,926 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.openAuxMdb(pathName='Y:/mb_ce.cae')
+mdb.copyAuxMdbModel(fromName='Model-1', toName='Model-1')
+mdb.copyAuxMdbModel(fromName='Model-1', toName='Model-1')
+mdb.closeAuxMdb()
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='check', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, numThreadsPerMpiProcess=1, queue=None, resultsFormat=
+    ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=0, 
+    waitMinutes=0)
+mdb.jobs['check'].submit(consistencyChecking=OFF)
+mdb.jobs['check']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'jobName': 'check', 'clientHost': 'vwhresxaas25', 'handle': 0})
+mdb.jobs['check']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(ODB_FILE, {'file': 'Y:\\check.odb', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(COMPLETED, {'message': 'Analysis phase complete', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'jobName': 'check', 'clientHost': 'vwhresxaas25', 'handle': 9700})
+mdb.jobs['check']._Message(STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'check'})
+mdb.jobs['check']._Message(ODB_FRAME, {'step': 0, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(ODB_FRAME, {'step': 0, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(STATUS, {'step': 1, 'increment': 1, 'attempts': 1, 
+    'severe': 0, 'equilibrium': 1, 'iterations': 1, 'totalTime': 0.0, 
+    'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 'phase': STANDARD_PHASE, 
+    'jobName': 'check'})
+mdb.jobs['check']._Message(END_STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'check'})
+mdb.jobs['check']._Message(STEP, {'stepId': 2, 'phase': STANDARD_PHASE, 
+    'jobName': 'check'})
+mdb.jobs['check']._Message(ODB_FRAME, {'step': 1, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(ODB_FRAME, {'step': 1, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(STATUS, {'step': 2, 'increment': 1, 'attempts': 1, 
+    'severe': 0, 'equilibrium': 1, 'iterations': 1, 'totalTime': 0.0, 
+    'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 'phase': STANDARD_PHASE, 
+    'jobName': 'check'})
+mdb.jobs['check']._Message(END_STEP, {'stepId': 2, 'phase': STANDARD_PHASE, 
+    'jobName': 'check'})
+mdb.jobs['check']._Message(STEP, {'stepId': 3, 'phase': STANDARD_PHASE, 
+    'jobName': 'check'})
+mdb.jobs['check']._Message(ODB_FRAME, {'step': 2, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(MEMORY_ESTIMATE, {'memory': 55.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(MINIMUM_MEMORY, {'minimum_memory': 20.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(ODB_FRAME, {'step': 2, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(STATUS, {'step': 3, 'increment': 1, 'attempts': 1, 
+    'severe': 0, 'equilibrium': 1, 'iterations': 1, 'totalTime': 0.0, 
+    'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 'phase': STANDARD_PHASE, 
+    'jobName': 'check'})
+mdb.jobs['check']._Message(END_STEP, {'stepId': 3, 'phase': STANDARD_PHASE, 
+    'jobName': 'check'})
+mdb.jobs['check']._Message(COMPLETED, {'message': 'Analysis phase complete', 
+    'phase': STANDARD_PHASE, 'jobName': 'check'})
+mdb.jobs['check']._Message(JOB_COMPLETED, {'time': 'Sat Feb 24 11:59:49 2024', 
+    'jobName': 'check'})
+mdb.models['Model-1'].loads['uniformed_load-Copy'].setValues(magnitude=
+    0.00452079566)
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='magnitude', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, numThreadsPerMpiProcess=1, queue=None, resultsFormat=
+    ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=0, 
+    waitMinutes=0)
+mdb.jobs['magnitude'].submit(consistencyChecking=OFF)
+mdb.jobs['magnitude']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'jobName': 'magnitude', 'clientHost': 'vwhresxaas25', 'handle': 0})
+mdb.jobs['magnitude']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(ODB_FILE, {'file': 'Y:\\magnitude.odb', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(COMPLETED, {
+    'message': 'Analysis phase complete', 'phase': BATCHPRE_PHASE, 
+    'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'jobName': 'magnitude', 'clientHost': 'vwhresxaas25', 'handle': 9448})
+mdb.jobs['magnitude']._Message(STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(ODB_FRAME, {'step': 0, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(ODB_FRAME, {'step': 0, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(STATUS, {'step': 1, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(END_STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(STEP, {'stepId': 2, 'phase': STANDARD_PHASE, 
+    'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(ODB_FRAME, {'step': 1, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(ODB_FRAME, {'step': 1, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(STATUS, {'step': 2, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(END_STEP, {'stepId': 2, 'phase': STANDARD_PHASE, 
+    'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(STEP, {'stepId': 3, 'phase': STANDARD_PHASE, 
+    'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(ODB_FRAME, {'step': 2, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(MEMORY_ESTIMATE, {'memory': 55.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(MINIMUM_MEMORY, {'minimum_memory': 20.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(ODB_FRAME, {'step': 2, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(STATUS, {'step': 3, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(END_STEP, {'stepId': 3, 'phase': STANDARD_PHASE, 
+    'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(COMPLETED, {
+    'message': 'Analysis phase complete', 'phase': STANDARD_PHASE, 
+    'jobName': 'magnitude'})
+mdb.jobs['magnitude']._Message(JOB_COMPLETED, {
+    'time': 'Sat Feb 24 12:50:38 2024', 'jobName': 'magnitude'})
+mdb.models['Model-1'].loads['uniformed_load-Copy'].setValues(distributionType=
+    TOTAL_FORCE, magnitude=1.0)
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='total_force', nodalOutputPrecision=
+    SINGLE, numCpus=1, numGPUs=0, numThreadsPerMpiProcess=1, queue=None, 
+    resultsFormat=ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=
+    0, waitMinutes=0)
+mdb.jobs['total_force'].submit(consistencyChecking=OFF)
+mdb.jobs['total_force']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'jobName': 'total_force', 'clientHost': 'vwhresxaas25', 'handle': 0})
+mdb.jobs['total_force']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(ODB_FILE, {'file': 'Y:\\total_force.odb', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(COMPLETED, {
+    'message': 'Analysis phase complete', 'phase': BATCHPRE_PHASE, 
+    'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'jobName': 'total_force', 'clientHost': 'vwhresxaas25', 'handle': 7176})
+mdb.jobs['total_force']._Message(STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(ODB_FRAME, {'step': 0, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(ODB_FRAME, {'step': 0, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(STATUS, {'step': 1, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(END_STEP, {'stepId': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(STEP, {'stepId': 2, 'phase': STANDARD_PHASE, 
+    'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(ODB_FRAME, {'step': 1, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(ODB_FRAME, {'step': 1, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(STATUS, {'step': 2, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(END_STEP, {'stepId': 2, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(STEP, {'stepId': 3, 'phase': STANDARD_PHASE, 
+    'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(ODB_FRAME, {'step': 2, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(MEMORY_ESTIMATE, {'memory': 55.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(MINIMUM_MEMORY, {'minimum_memory': 20.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(ODB_FRAME, {'step': 2, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(STATUS, {'step': 3, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(END_STEP, {'stepId': 3, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(COMPLETED, {
+    'message': 'Analysis phase complete', 'phase': STANDARD_PHASE, 
+    'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(JOB_COMPLETED, {
+    'time': 'Sat Feb 24 13:07:17 2024', 'jobName': 'total_force'})
+mdb.models['Model-1'].loads['uniformed_load-Copy'].setValues(distributionType=
+    UNIFORM)
+mdb.jobs['total_force'].submit(consistencyChecking=OFF)
+mdb.jobs['total_force']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'jobName': 'total_force', 'clientHost': 'vwhresxaas25', 'handle': 0})
+mdb.jobs['total_force']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(ODB_FILE, {'file': 'Y:\\total_force.odb', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(COMPLETED, {
+    'message': 'Analysis phase complete', 'phase': BATCHPRE_PHASE, 
+    'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'jobName': 'total_force', 'clientHost': 'vwhresxaas25', 'handle': 10036})
+mdb.jobs['total_force']._Message(STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(ODB_FRAME, {'step': 0, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(ODB_FRAME, {'step': 0, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(STATUS, {'step': 1, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(END_STEP, {'stepId': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(STEP, {'stepId': 2, 'phase': STANDARD_PHASE, 
+    'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(ODB_FRAME, {'step': 1, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(ODB_FRAME, {'step': 1, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(STATUS, {'step': 2, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(END_STEP, {'stepId': 2, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(STEP, {'stepId': 3, 'phase': STANDARD_PHASE, 
+    'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(ODB_FRAME, {'step': 2, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(MEMORY_ESTIMATE, {'memory': 55.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(MINIMUM_MEMORY, {'minimum_memory': 20.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(ODB_FRAME, {'step': 2, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(STATUS, {'step': 3, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(END_STEP, {'stepId': 3, 
+    'phase': STANDARD_PHASE, 'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(COMPLETED, {
+    'message': 'Analysis phase complete', 'phase': STANDARD_PHASE, 
+    'jobName': 'total_force'})
+mdb.jobs['total_force']._Message(JOB_COMPLETED, {
+    'time': 'Sat Feb 24 13:20:52 2024', 'jobName': 'total_force'})
+mdb.models['Model-1'].boundaryConditions['clamped_edges'].setValues(ur1=UNSET, 
+    ur2=UNSET, ur3=UNSET)
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='simply_supported', nodalOutputPrecision=
+    SINGLE, numCpus=1, numGPUs=0, numThreadsPerMpiProcess=1, queue=None, 
+    resultsFormat=ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=
+    0, waitMinutes=0)
+mdb.jobs['simply_supported'].submit(consistencyChecking=OFF)
+mdb.jobs['simply_supported']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'jobName': 'simply_supported', 'clientHost': 'vwhresxaas25', 'handle': 0})
+mdb.jobs['simply_supported']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(ODB_FILE, {
+    'file': 'Y:\\simply_supported.odb', 'phase': BATCHPRE_PHASE, 
+    'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(COMPLETED, {
+    'message': 'Analysis phase complete', 'phase': BATCHPRE_PHASE, 
+    'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'jobName': 'simply_supported', 'clientHost': 'vwhresxaas25', 
+    'handle': 4296})
+mdb.jobs['simply_supported']._Message(STEP, {'stepId': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(ODB_FRAME, {'step': 0, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(PHYSICAL_MEMORY, {
+    'physical_memory': 16384.0, 'phase': STANDARD_PHASE, 
+    'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(ODB_FRAME, {'step': 0, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(STATUS, {'step': 1, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(END_STEP, {'stepId': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(STEP, {'stepId': 2, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(ODB_FRAME, {'step': 1, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(PHYSICAL_MEMORY, {
+    'physical_memory': 16384.0, 'phase': STANDARD_PHASE, 
+    'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(ODB_FRAME, {'step': 1, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(STATUS, {'step': 2, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(END_STEP, {'stepId': 2, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(STEP, {'stepId': 3, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(ODB_FRAME, {'step': 2, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(MEMORY_ESTIMATE, {'memory': 55.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(PHYSICAL_MEMORY, {
+    'physical_memory': 16384.0, 'phase': STANDARD_PHASE, 
+    'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(MINIMUM_MEMORY, {'minimum_memory': 20.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(ODB_FRAME, {'step': 2, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(STATUS, {'step': 3, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(END_STEP, {'stepId': 3, 
+    'phase': STANDARD_PHASE, 'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(COMPLETED, {
+    'message': 'Analysis phase complete', 'phase': STANDARD_PHASE, 
+    'jobName': 'simply_supported'})
+mdb.jobs['simply_supported']._Message(JOB_COMPLETED, {
+    'time': 'Sat Feb 24 13:40:48 2024', 'jobName': 'simply_supported'})
+mdb.models['Model-1'].loads['uniformed_load-Copy'].setValues(magnitude=
+    0.00319898)
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='excel', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, numThreadsPerMpiProcess=1, queue=None, resultsFormat=
+    ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=0, 
+    waitMinutes=0)
+mdb.jobs['excel'].submit(consistencyChecking=OFF)
+mdb.jobs['excel']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'jobName': 'excel', 'clientHost': 'vwhresxaas25', 'handle': 0})
+mdb.jobs['excel']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(ODB_FILE, {'file': 'Y:\\excel.odb', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(COMPLETED, {'message': 'Analysis phase complete', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'jobName': 'excel', 'clientHost': 'vwhresxaas25', 'handle': 3544})
+mdb.jobs['excel']._Message(STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'excel'})
+mdb.jobs['excel']._Message(ODB_FRAME, {'step': 0, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(ODB_FRAME, {'step': 0, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(STATUS, {'step': 1, 'increment': 1, 'attempts': 1, 
+    'severe': 0, 'equilibrium': 1, 'iterations': 1, 'totalTime': 0.0, 
+    'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 'phase': STANDARD_PHASE, 
+    'jobName': 'excel'})
+mdb.jobs['excel']._Message(END_STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'excel'})
+mdb.jobs['excel']._Message(STEP, {'stepId': 2, 'phase': STANDARD_PHASE, 
+    'jobName': 'excel'})
+mdb.jobs['excel']._Message(ODB_FRAME, {'step': 1, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(ODB_FRAME, {'step': 1, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(STATUS, {'step': 2, 'increment': 1, 'attempts': 1, 
+    'severe': 0, 'equilibrium': 1, 'iterations': 1, 'totalTime': 0.0, 
+    'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 'phase': STANDARD_PHASE, 
+    'jobName': 'excel'})
+mdb.jobs['excel']._Message(END_STEP, {'stepId': 2, 'phase': STANDARD_PHASE, 
+    'jobName': 'excel'})
+mdb.jobs['excel']._Message(STEP, {'stepId': 3, 'phase': STANDARD_PHASE, 
+    'jobName': 'excel'})
+mdb.jobs['excel']._Message(ODB_FRAME, {'step': 2, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(MEMORY_ESTIMATE, {'memory': 55.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(MINIMUM_MEMORY, {'minimum_memory': 20.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(ODB_FRAME, {'step': 2, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(STATUS, {'step': 3, 'increment': 1, 'attempts': 1, 
+    'severe': 0, 'equilibrium': 1, 'iterations': 1, 'totalTime': 0.0, 
+    'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 'phase': STANDARD_PHASE, 
+    'jobName': 'excel'})
+mdb.jobs['excel']._Message(END_STEP, {'stepId': 3, 'phase': STANDARD_PHASE, 
+    'jobName': 'excel'})
+mdb.jobs['excel']._Message(COMPLETED, {'message': 'Analysis phase complete', 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(JOB_COMPLETED, {'time': 'Sat Feb 24 14:58:46 2024', 
+    'jobName': 'excel'})
+mdb.models['Model-1'].boundaryConditions['clamped_edges'].setValues(ur1=0.0, 
+    ur2=0.0, ur3=0.0)
+mdb.models['Model-1'].boundaryConditions['clamped_edges'].setValues(ur1=UNSET, 
+    ur2=UNSET, ur3=UNSET)
+mdb.models['Model-1'].boundaryConditions['clamped_edges'].setValues(ur1=0.0, 
+    ur2=0.0, ur3=0.0)
+mdb.models['Model-1'].loads['uniformed_load-Copy'].setValues(magnitude=
+    1.446191829826e-05)
+mdb.jobs['excel'].submit(consistencyChecking=OFF)
+mdb.jobs['excel']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'jobName': 'excel', 'clientHost': 'vwhresxaas25', 'handle': 0})
+mdb.jobs['excel']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(ODB_FILE, {'file': 'Y:\\excel.odb', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(COMPLETED, {'message': 'Analysis phase complete', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'jobName': 'excel', 'clientHost': 'vwhresxaas25', 'handle': 5440})
+mdb.jobs['excel']._Message(STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'excel'})
+mdb.jobs['excel']._Message(ODB_FRAME, {'step': 0, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(ODB_FRAME, {'step': 0, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(STATUS, {'step': 1, 'increment': 1, 'attempts': 1, 
+    'severe': 0, 'equilibrium': 1, 'iterations': 1, 'totalTime': 0.0, 
+    'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 'phase': STANDARD_PHASE, 
+    'jobName': 'excel'})
+mdb.jobs['excel']._Message(END_STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'excel'})
+mdb.jobs['excel']._Message(STEP, {'stepId': 2, 'phase': STANDARD_PHASE, 
+    'jobName': 'excel'})
+mdb.jobs['excel']._Message(ODB_FRAME, {'step': 1, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(ODB_FRAME, {'step': 1, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(STATUS, {'step': 2, 'increment': 1, 'attempts': 1, 
+    'severe': 0, 'equilibrium': 1, 'iterations': 1, 'totalTime': 0.0, 
+    'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 'phase': STANDARD_PHASE, 
+    'jobName': 'excel'})
+mdb.jobs['excel']._Message(END_STEP, {'stepId': 2, 'phase': STANDARD_PHASE, 
+    'jobName': 'excel'})
+mdb.jobs['excel']._Message(STEP, {'stepId': 3, 'phase': STANDARD_PHASE, 
+    'jobName': 'excel'})
+mdb.jobs['excel']._Message(ODB_FRAME, {'step': 2, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(MEMORY_ESTIMATE, {'memory': 55.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(MINIMUM_MEMORY, {'minimum_memory': 20.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(ODB_FRAME, {'step': 2, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(STATUS, {'step': 3, 'increment': 1, 'attempts': 1, 
+    'severe': 0, 'equilibrium': 1, 'iterations': 1, 'totalTime': 0.0, 
+    'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 'phase': STANDARD_PHASE, 
+    'jobName': 'excel'})
+mdb.jobs['excel']._Message(END_STEP, {'stepId': 3, 'phase': STANDARD_PHASE, 
+    'jobName': 'excel'})
+mdb.jobs['excel']._Message(COMPLETED, {'message': 'Analysis phase complete', 
+    'phase': STANDARD_PHASE, 'jobName': 'excel'})
+mdb.jobs['excel']._Message(JOB_COMPLETED, {'time': 'Sat Feb 24 15:16:52 2024', 
+    'jobName': 'excel'})
+# Save by 10992702 on 2024_02_24-15.17.20; build 2024 2023_09_21-14.55.25 RELr426 190762
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].StaticLinearPerturbationStep(name='simple_test', 
+    previous='Initial')
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].move('clamped_edges', 
+    'simple_test')
+mdb.models['Model-1'].historyOutputRequests['H-Output-1'].move('clamped_edges', 
+    'simple_test')
+mdb.models['Model-1'].boundaryConditions['fixed'].deactivate('simple_test')
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].edges.getSequenceFromMask(
+    ('[#f ]', ), ), name='Set-4')
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName=
+    'simple_test', distributionType=UNIFORM, fieldName='', fixed=OFF, 
+    localCsys=None, name='simple_test_BC', region=
+    mdb.models['Model-1'].rootAssembly.sets['Set-4'], u1=0.0, u2=0.0, u3=0.0, 
+    ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['Model-1'].rootAssembly.Surface(name='Surf-2', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#1 ]', ), ))
+mdb.models['Model-1'].Pressure(createStepName='simple_test', distributionType=
+    UNIFORM, field='', magnitude=1.0, name='q', region=
+    mdb.models['Model-1'].rootAssembly.surfaces['Surf-2'])
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='simple_test', nodalOutputPrecision=
+    SINGLE, numCpus=1, numGPUs=0, numThreadsPerMpiProcess=1, queue=None, 
+    resultsFormat=ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=
+    0, waitMinutes=0)
+mdb.jobs['simple_test'].submit(consistencyChecking=OFF)
+mdb.jobs['simple_test']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'jobName': 'simple_test', 'clientHost': 'vwhresxaas25', 'handle': 0})
+mdb.jobs['simple_test']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(ODB_FILE, {'file': 'Y:\\simple_test.odb', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(COMPLETED, {
+    'message': 'Analysis phase complete', 'phase': BATCHPRE_PHASE, 
+    'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'jobName': 'simple_test', 'clientHost': 'vwhresxaas25', 'handle': 6376})
+mdb.jobs['simple_test']._Message(STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(ODB_FRAME, {'step': 0, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(ODB_FRAME, {'step': 0, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(STATUS, {'step': 1, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(END_STEP, {'stepId': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(STEP, {'stepId': 2, 'phase': STANDARD_PHASE, 
+    'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(ODB_FRAME, {'step': 1, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(ODB_FRAME, {'step': 1, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(STATUS, {'step': 2, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(END_STEP, {'stepId': 2, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(STEP, {'stepId': 3, 'phase': STANDARD_PHASE, 
+    'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(ODB_FRAME, {'step': 2, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(ODB_FRAME, {'step': 2, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(STATUS, {'step': 3, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(END_STEP, {'stepId': 3, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(STEP, {'stepId': 4, 'phase': STANDARD_PHASE, 
+    'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(ODB_FRAME, {'step': 3, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(MEMORY_ESTIMATE, {'memory': 55.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(MINIMUM_MEMORY, {'minimum_memory': 20.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(ODB_FRAME, {'step': 3, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(STATUS, {'step': 4, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(END_STEP, {'stepId': 4, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(COMPLETED, {
+    'message': 'Analysis phase complete', 'phase': STANDARD_PHASE, 
+    'jobName': 'simple_test'})
+mdb.jobs['simple_test']._Message(JOB_COMPLETED, {
+    'time': 'Sat Feb 24 15:32:03 2024', 'jobName': 'simple_test'})
+mdb.models['Model-1'].loads['q'].setValues(magnitude=2.0)
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='simple_test2', nodalOutputPrecision=
+    SINGLE, numCpus=1, numGPUs=0, numThreadsPerMpiProcess=1, queue=None, 
+    resultsFormat=ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=
+    0, waitMinutes=0)
+mdb.jobs['simple_test2'].submit(consistencyChecking=OFF)
+mdb.jobs['simple_test2']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'jobName': 'simple_test2', 'clientHost': 'vwhresxaas25', 'handle': 0})
+mdb.jobs['simple_test2']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(ODB_FILE, {'file': 'Y:\\simple_test2.odb', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(COMPLETED, {
+    'message': 'Analysis phase complete', 'phase': BATCHPRE_PHASE, 
+    'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'jobName': 'simple_test2', 'clientHost': 'vwhresxaas25', 'handle': 2196})
+mdb.jobs['simple_test2']._Message(STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(ODB_FRAME, {'step': 0, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(ODB_FRAME, {'step': 0, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(STATUS, {'step': 1, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(END_STEP, {'stepId': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(STEP, {'stepId': 2, 'phase': STANDARD_PHASE, 
+    'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(ODB_FRAME, {'step': 1, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(ODB_FRAME, {'step': 1, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(STATUS, {'step': 2, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(END_STEP, {'stepId': 2, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(STEP, {'stepId': 3, 'phase': STANDARD_PHASE, 
+    'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(ODB_FRAME, {'step': 2, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(ODB_FRAME, {'step': 2, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(STATUS, {'step': 3, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(END_STEP, {'stepId': 3, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(STEP, {'stepId': 4, 'phase': STANDARD_PHASE, 
+    'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(ODB_FRAME, {'step': 3, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(MEMORY_ESTIMATE, {'memory': 55.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(MINIMUM_MEMORY, {'minimum_memory': 20.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(ODB_FRAME, {'step': 3, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(STATUS, {'step': 4, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(END_STEP, {'stepId': 4, 
+    'phase': STANDARD_PHASE, 'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(COMPLETED, {
+    'message': 'Analysis phase complete', 'phase': STANDARD_PHASE, 
+    'jobName': 'simple_test2'})
+mdb.jobs['simple_test2']._Message(JOB_COMPLETED, {
+    'time': 'Sat Feb 24 15:45:22 2024', 'jobName': 'simple_test2'})
+# Save by 10992702 on 2024_02_24-17.41.07; build 2024 2023_09_21-14.55.25 RELr426 190762

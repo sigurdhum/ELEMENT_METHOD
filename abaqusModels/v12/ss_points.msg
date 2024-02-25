@@ -1,0 +1,290 @@
+1
+
+   Abaqus 2024                                  Date 25-feb-2024   Time 14:31:19
+   For use by POLITECNICO DI MILANO under license from Dassault Systemes or its subsidiary.
+
+                                                                                 
+                                                                                 
+ STEP    1     INCREMENT     1     STEP TIME    0.00    
+
+
+                        S T E P       1     S T A T I C   A N A L Y S I S
+
+
+                                                                                          
+
+          FIXED TIME INCREMENTS
+          TIME INCREMENT IS                                    2.220E-16
+          TIME PERIOD IS                                       2.220E-16
+
+     LINEAR EQUATION SOLVER TYPE         DIRECT SPARSE
+
+     THIS IS A LINEAR PERTURBATION STEP.
+     ALL LOADS ARE DEFINED AS CHANGE IN LOAD TO THE REFERENCE STATE
+
+     EXTRAPOLATION WILL NOT BE USED
+
+     CHARACTERISTIC ELEMENT LENGTH      4.99    
+
+     DETAILS REGARDING ACTUAL SOLUTION WAVEFRONT REQUESTED
+
+     DETAILED OUTPUT OF DIAGNOSTICS TO DATABASE REQUESTED
+
+     PRINT OF INCREMENT NUMBER, TIME, ETC., TO THE MESSAGE FILE EVERY     1  INCREMENTS
+
+     COLLECTING MODEL CONSTRAINT INFORMATION FOR OVERCONSTRAINT CHECKS
+
+     COLLECTING STEP CONSTRAINT INFORMATION FOR OVERCONSTRAINT CHECKS
+
+
+  INCREMENT     1 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  2.220E-16
+ 
+	SYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
+ 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
+        NUMBER OF EQUATIONS:  17280
+        NUMBER OF RHS:        1
+        NUMBER OF FLOPS:      6.321e+08
+        SOLVER ELAPSED TIME:  88ms
+
+ ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
+   0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
+
+ TIME INCREMENT COMPLETED  2.220E-16,  FRACTION OF STEP COMPLETED   1.00    
+ STEP TIME COMPLETED       2.220E-16,  TOTAL TIME COMPLETED         0.00    
+1
+
+   Abaqus 2024                                  Date 25-feb-2024   Time 14:31:21
+   For use by POLITECNICO DI MILANO under license from Dassault Systemes or its subsidiary.
+
+                                                                                 
+                                                                                 
+ STEP    2     INCREMENT     1     STEP TIME    0.00    
+
+
+                        S T E P       2     S T A T I C   A N A L Y S I S
+
+
+                                                                                          
+
+          FIXED TIME INCREMENTS
+          TIME INCREMENT IS                                    2.220E-16
+          TIME PERIOD IS                                       2.220E-16
+
+     LINEAR EQUATION SOLVER TYPE         DIRECT SPARSE
+
+     THIS IS A LINEAR PERTURBATION STEP.
+     ALL LOADS ARE DEFINED AS CHANGE IN LOAD TO THE REFERENCE STATE
+
+     EXTRAPOLATION WILL NOT BE USED
+
+     CHARACTERISTIC ELEMENT LENGTH      4.99    
+
+     DETAILS REGARDING ACTUAL SOLUTION WAVEFRONT REQUESTED
+
+     DETAILED OUTPUT OF DIAGNOSTICS TO DATABASE REQUESTED
+
+     PRINT OF INCREMENT NUMBER, TIME, ETC., TO THE MESSAGE FILE EVERY     1  INCREMENTS
+
+     COLLECTING STEP CONSTRAINT INFORMATION FOR OVERCONSTRAINT CHECKS
+
+
+  INCREMENT     1 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  2.220E-16
+ 
+	SYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
+ 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
+        NUMBER OF EQUATIONS:  17280
+        NUMBER OF RHS:        1
+        NUMBER OF FLOPS:      6.321e+08
+        SOLVER ELAPSED TIME:  71ms
+
+ ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
+   0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
+
+ TIME INCREMENT COMPLETED  2.220E-16,  FRACTION OF STEP COMPLETED   1.00    
+ STEP TIME COMPLETED       2.220E-16,  TOTAL TIME COMPLETED         0.00    
+1
+
+   Abaqus 2024                                  Date 25-feb-2024   Time 14:31:21
+   For use by POLITECNICO DI MILANO under license from Dassault Systemes or its subsidiary.
+
+                                                                                 
+                                                                                 
+ STEP    3     INCREMENT     1     STEP TIME    0.00    
+
+
+                        S T E P       3     S T A T I C   A N A L Y S I S
+
+
+                                                                                          
+
+          FIXED TIME INCREMENTS
+          TIME INCREMENT IS                                    2.220E-16
+          TIME PERIOD IS                                       2.220E-16
+
+     LINEAR EQUATION SOLVER TYPE         DIRECT SPARSE
+
+     THIS IS A LINEAR PERTURBATION STEP.
+     ALL LOADS ARE DEFINED AS CHANGE IN LOAD TO THE REFERENCE STATE
+
+     EXTRAPOLATION WILL NOT BE USED
+
+     CHARACTERISTIC ELEMENT LENGTH      4.99    
+
+     DETAILS REGARDING ACTUAL SOLUTION WAVEFRONT REQUESTED
+
+     DETAILED OUTPUT OF DIAGNOSTICS TO DATABASE REQUESTED
+
+     PRINT OF INCREMENT NUMBER, TIME, ETC., TO THE MESSAGE FILE EVERY     1  INCREMENTS
+
+     COLLECTING STEP CONSTRAINT INFORMATION FOR OVERCONSTRAINT CHECKS
+
+
+  INCREMENT     1 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  2.220E-16
+ 
+	SYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
+ 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
+        NUMBER OF EQUATIONS:  17280
+        NUMBER OF RHS:        1
+        NUMBER OF FLOPS:      6.321e+08
+        SOLVER ELAPSED TIME:  73ms
+
+ ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
+   0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
+
+ TIME INCREMENT COMPLETED  2.220E-16,  FRACTION OF STEP COMPLETED   1.00    
+ STEP TIME COMPLETED       2.220E-16,  TOTAL TIME COMPLETED         0.00    
+1
+
+   Abaqus 2024                                  Date 25-feb-2024   Time 14:31:22
+   For use by POLITECNICO DI MILANO under license from Dassault Systemes or its subsidiary.
+
+                                                                                 
+                                                                                 
+ STEP    4     INCREMENT     1     STEP TIME    0.00    
+
+
+                        S T E P       4     S T A T I C   A N A L Y S I S
+
+
+                                                                                          
+
+          FIXED TIME INCREMENTS
+          TIME INCREMENT IS                                    2.220E-16
+          TIME PERIOD IS                                       2.220E-16
+
+     LINEAR EQUATION SOLVER TYPE         DIRECT SPARSE
+
+     THIS IS A LINEAR PERTURBATION STEP.
+     ALL LOADS ARE DEFINED AS CHANGE IN LOAD TO THE REFERENCE STATE
+
+     EXTRAPOLATION WILL NOT BE USED
+
+     CHARACTERISTIC ELEMENT LENGTH      4.99    
+
+     DETAILS REGARDING ACTUAL SOLUTION WAVEFRONT REQUESTED
+
+     DETAILED OUTPUT OF DIAGNOSTICS TO DATABASE REQUESTED
+
+     PRINT OF INCREMENT NUMBER, TIME, ETC., TO THE MESSAGE FILE EVERY     1  INCREMENTS
+
+     COLLECTING STEP CONSTRAINT INFORMATION FOR OVERCONSTRAINT CHECKS
+
+
+  INCREMENT     1 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  2.220E-16
+ 
+	SYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
+ 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
+        NUMBER OF EQUATIONS:  17280
+        NUMBER OF RHS:        1
+        NUMBER OF FLOPS:      6.321e+08
+        SOLVER ELAPSED TIME:  69ms
+
+ ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
+   0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
+
+ TIME INCREMENT COMPLETED  2.220E-16,  FRACTION OF STEP COMPLETED   1.00    
+ STEP TIME COMPLETED       2.220E-16,  TOTAL TIME COMPLETED         0.00    
+1
+
+   Abaqus 2024                                  Date 25-feb-2024   Time 14:31:22
+   For use by POLITECNICO DI MILANO under license from Dassault Systemes or its subsidiary.
+
+                                                                                 
+                                                                                 
+ STEP    5     INCREMENT     1     STEP TIME    0.00    
+
+
+                        S T E P       5     S T A T I C   A N A L Y S I S
+
+
+                                                                                          
+
+          FIXED TIME INCREMENTS
+          TIME INCREMENT IS                                    2.220E-16
+          TIME PERIOD IS                                       2.220E-16
+
+     LINEAR EQUATION SOLVER TYPE         DIRECT SPARSE
+
+     THIS IS A LINEAR PERTURBATION STEP.
+     ALL LOADS ARE DEFINED AS CHANGE IN LOAD TO THE REFERENCE STATE
+
+     EXTRAPOLATION WILL NOT BE USED
+
+     CHARACTERISTIC ELEMENT LENGTH      4.99    
+
+     DETAILS REGARDING ACTUAL SOLUTION WAVEFRONT REQUESTED
+
+     DETAILED OUTPUT OF DIAGNOSTICS TO DATABASE REQUESTED
+
+     PRINT OF INCREMENT NUMBER, TIME, ETC., TO THE MESSAGE FILE EVERY     1  INCREMENTS
+
+     COLLECTING STEP CONSTRAINT INFORMATION FOR OVERCONSTRAINT CHECKS
+
+
+  INCREMENT     1 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  2.220E-16
+
+ ***NOTE: THIS STEP DOES NOT INVOLVE MATRIX DECOMPOSITION. THE DECOMPOSED 
+          MATRIX FROM THE PREVIOUS STEP IS USED.
+ 
+	SYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
+ 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
+        NUMBER OF EQUATIONS:  17280
+        NUMBER OF RHS:        1
+        NUMBER OF FLOPS:      6.321e+08
+        SOLVER ELAPSED TIME:  12ms
+
+ ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
+   0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
+
+ TIME INCREMENT COMPLETED  2.220E-16,  FRACTION OF STEP COMPLETED   1.00    
+ STEP TIME COMPLETED       2.220E-16,  TOTAL TIME COMPLETED         0.00    
+
+
+          THE ANALYSIS HAS BEEN COMPLETED
+
+
+
+     ANALYSIS SUMMARY:
+     TOTAL OF          5  INCREMENTS
+                       0  CUTBACKS IN AUTOMATIC INCREMENTATION
+                       5  ITERATIONS INCLUDING CONTACT ITERATIONS IF PRESENT
+                       5  PASSES THROUGH THE EQUATION SOLVER OF WHICH 
+                       4  INVOLVE MATRIX DECOMPOSITION, INCLUDING
+                       0  DECOMPOSITION(S) OF THE MASS MATRIX
+                       1  REORDERING OF EQUATIONS TO MINIMIZE WAVEFRONT
+                       0  ADDITIONAL RESIDUAL EVALUATIONS FOR LINE SEARCHES
+                       0  ADDITIONAL OPERATOR EVALUATIONS FOR LINE SEARCHES
+                       8  WARNING MESSAGES DURING USER INPUT PROCESSING
+                       0  WARNING MESSAGES DURING ANALYSIS
+                       0  ANALYSIS WARNINGS ARE NUMERICAL PROBLEM MESSAGES
+                       0  ANALYSIS WARNINGS ARE NEGATIVE EIGENVALUE MESSAGES
+                       0  ERROR MESSAGES
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =      1.4    
+       SYSTEM TIME (SEC)    =     0.20    
+       TOTAL CPU TIME (SEC) =      1.6    
+       WALLCLOCK TIME (SEC) =            4
+       MEMORY PEAK (GB)     =            0

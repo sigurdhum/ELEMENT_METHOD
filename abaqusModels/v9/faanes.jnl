@@ -1,0 +1,87 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.openAuxMdb(pathName='Y:/m+16_v4.cae')
+mdb.copyAuxMdbModel(fromName='Model-1', toName='Model-1')
+mdb.copyAuxMdbModel(fromName='Model-1', toName='Model-1')
+mdb.closeAuxMdb()
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='mb_faanes', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, numThreadsPerMpiProcess=1, queue=None, resultsFormat=
+    ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=0, 
+    waitMinutes=0)
+mdb.jobs['mb_faanes'].submit(consistencyChecking=OFF)
+mdb.jobs['mb_faanes']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'jobName': 'mb_faanes', 'clientHost': 'vwhresxaas21', 'handle': 0})
+mdb.jobs['mb_faanes']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(WARNING, {
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(WARNING, {
+    'message': 'OUTPUT REQUEST CF HAS BEEN REMOVED AS THERE ARE NO APPLICABLE LOADS IN THIS STEP', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(ODB_FILE, {'file': 'Y:\\mb_faanes.odb', 
+    'phase': BATCHPRE_PHASE, 'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(COMPLETED, {
+    'message': 'Analysis phase complete', 'phase': BATCHPRE_PHASE, 
+    'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'jobName': 'mb_faanes', 'clientHost': 'vwhresxaas21', 'handle': 4736})
+mdb.jobs['mb_faanes']._Message(STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(ODB_FRAME, {'step': 0, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(MEMORY_ESTIMATE, {'memory': 63.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(ODB_FRAME, {'step': 0, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(STATUS, {'step': 1, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(END_STEP, {'stepId': 1, 'phase': STANDARD_PHASE, 
+    'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(STEP, {'stepId': 2, 'phase': STANDARD_PHASE, 
+    'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(ODB_FRAME, {'step': 1, 'frame': 0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(MEMORY_ESTIMATE, {'memory': 55.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(PHYSICAL_MEMORY, {'physical_memory': 16384.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(MINIMUM_MEMORY, {'minimum_memory': 20.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(ODB_FRAME, {'step': 1, 'frame': 1, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(STATUS, {'step': 2, 'increment': 1, 
+    'attempts': 1, 'severe': 0, 'equilibrium': 1, 'iterations': 1, 
+    'totalTime': 0.0, 'stepTime': 2.22e-16, 'timeIncrement': 2.22e-16, 
+    'phase': STANDARD_PHASE, 'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(END_STEP, {'stepId': 2, 'phase': STANDARD_PHASE, 
+    'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(COMPLETED, {
+    'message': 'Analysis phase complete', 'phase': STANDARD_PHASE, 
+    'jobName': 'mb_faanes'})
+mdb.jobs['mb_faanes']._Message(JOB_COMPLETED, {
+    'time': 'Thu Feb 22 12:54:22 2024', 'jobName': 'mb_faanes'})
+# Save by 10992702 on 2024_02_22-15.27.04; build 2024 2023_09_21-14.55.25 RELr426 190762
