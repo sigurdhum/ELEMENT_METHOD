@@ -1,0 +1,22 @@
+Analysis initiated from SIMULIA established products
+Abaqus JOB ss
+Abaqus 2024
+Abaqus License Manager checked out the following licenses:
+Abaqus/Standard checked out 8 tokens from Flexnet server lml-2b.polimi.it.
+<2387 out of 2400 licenses remain available>.
+Begin Analysis Input File Processor
+26/02/2024 17:12:09
+Run pre.exe
+26/02/2024 17:12:12
+End Analysis Input File Processor
+Begin Abaqus/Standard Analysis
+26/02/2024 17:12:12
+Run standard.exe
+26/02/2024 17:12:17
+End Abaqus/Standard Analysis
+Begin SIM Wrap-up
+26/02/2024 17:12:18
+Run SMASimUtility.exe
+26/02/2024 17:12:18
+End SIM Wrap-up
+Abaqus JOB ss COMPLETED
